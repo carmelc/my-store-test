@@ -19,15 +19,15 @@ export async function queryProducts(config: WixStoresConfig, limit: number = 500
 
 export async function queryCollections(config: WixStoresConfig, limit: number = 500) {
   const {wixClient, legacyFetch} = await buildClient(config)
-  console.log('*** LEGACY', await legacyFetch({url: 'stores/v1/collections/query', method: 'POST'}));
-  return wixClient.data.query({
-    collectionName: 'Stores/Collections',
-    query: {
-      paging: {
-        limit,
-      }
-    }
-  });
+  return {items: (await legacyFetch({url: 'stores/v1/collections/query', method: 'POST'}))};
+  // return wixClient.data.query({
+  //   collectionName: 'Stores/Collections',
+  //   query: {
+  //     paging: {
+  //       limit,
+  //     }
+  //   }
+  // });
 }
 
 export async function getAllProducts(config: WixStoresConfig, limit?: number) {
