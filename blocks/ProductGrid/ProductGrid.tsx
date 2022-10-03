@@ -1,8 +1,8 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
-import { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { LoadingDots } from '@components/ui'
+import { jsx } from 'theme-ui'
 import { Grid } from '@theme-ui/components'
 import { ProductCardProps } from '@components/common/ProductCard'
 import { ProductCardDemo, ProductCard } from '@components/common'
@@ -10,16 +10,17 @@ import { ProductCardDemo, ProductCard } from '@components/common'
 import {
   getCollection,
   getProduct,
-} from '@lib/shopify/storefront-data-hooks/src/api/operations'
-import shopifyConfig from '@config/shopify'
+} from '@lib/wix/storefront-data-hooks/src/api/operations'
+import wixConfig from '@config/wix'
+import { WixStoresProduct } from "@lib/wix-types";
 interface HighlightedCardProps extends Omit<ProductCardProps, 'product'> {
   index: number
 }
 
 export interface ProductGridProps {
-  products?: ShopifyBuy.Product[]
+  products?: WixStoresProduct[]
   productsList?: Array<{ product: string }>
-  collection?: string | any // ShopifyBuy.Collection
+  collection?: string | any
   offset: number
   limit: number
   cardProps: Omit<ProductCardProps, 'product'>
@@ -45,7 +46,7 @@ export const ProductGrid: FC<ProductGridProps> = ({
         .map((entry) => entry.product)
         .filter((handle: string | undefined) => typeof handle === 'string')
         .map(
-          async (handle: string) => await getProduct(shopifyConfig, { handle })
+          async (handle: string) => await getProduct(wixConfig, { handle })
         )
       setProducts(await Promise.all(promises))
       setLoading(false)
@@ -58,7 +59,7 @@ export const ProductGrid: FC<ProductGridProps> = ({
   useEffect(() => {
     const fetchCollection = async () => {
       setLoading(true)
-      const result = await getCollection(shopifyConfig, {
+      const result = await getCollection(wixConfig, {
         handle: collection,
       })
       setProducts(result.products)
@@ -80,7 +81,7 @@ export const ProductGrid: FC<ProductGridProps> = ({
     <Grid gap={2} width={['100%', '40%', '24%']}>
       {products.slice(offset, limit).map((product, i) => (
         <ProductComponent
-          key={String(product.id) + i}
+          key={String(product._id) + i}
           {...(highlightCard?.index === i ? highlightCard : cardProps)}
           product={product}
         />

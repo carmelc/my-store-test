@@ -6,19 +6,16 @@ import { Grid, Button } from '@theme-ui/components'
 import OptionPicker from '@components/common/OptionPicker'
 import { NextSeo } from 'next-seo'
 import { useUI } from '@components/ui/context'
-import { useAddItemToCart } from '@lib/shopify/storefront-data-hooks'
-import {
-  prepareVariantsWithOptions,
-  prepareVariantsImages,
-  getPrice,
-} from '@lib/shopify/storefront-data-hooks/src/utils/product'
+import { useAddItemToCart } from '@lib/wix/storefront-data-hooks'
+import { prepareVariantsWithOptions, getPrice } from '@lib/wix/storefront-data-hooks/src/utils/product'
 import { ImageCarousel, LoadingDots } from '@components/ui'
 import ProductLoader from './ProductLoader'
+import {WixStoresProduct} from "@lib/wix-types";
 
 interface Props {
   className?: string
   children?: any
-  product: ShopifyBuy.Product
+  product: any
   renderSeo?: boolean
   description?: string
   title?: string
@@ -28,43 +25,36 @@ const ProductBox: React.FC<Props> = ({
   product,
   renderSeo,
   description = product.description,
-  title = product.title,
+  title = product.name,
 }) => {
+  if (product) {
+    console.log('*** showing product: ', product);
+  }
   const [loading, setLoading] = useState(false)
   const addItem = useAddItemToCart()
-  const colors: string[] | undefined = product?.options
-    ?.find((option) => option?.name?.toLowerCase() === 'color')
-    ?.values?.map((op) => op.value as string)
-
-  const sizes: string[] | undefined = product?.options
-    ?.find((option) => option?.name?.toLowerCase() === 'size')
-    ?.values?.map((op) => op.value as string)
 
   const variants = useMemo(
     () => prepareVariantsWithOptions(product?.variants),
     [product?.variants]
   )
-  const images = useMemo(() => prepareVariantsImages(variants, 'color'), [
-    variants,
-  ])
 
   const { openSidebar } = useUI()
 
-  const [variant, setVariant] = useState(variants[0] || {})
-  const [color, setColor] = useState(variant.color)
-  const [size, setSize] = useState(variant.size)
+  const [variant, setVariant] = useState(variants?.[0] || {})
+  const [selectedProductOptions, setSelectedProductOptions] = useState<any>({});
+  useEffect(() => {
+    if (product?.productOptions) {
+      setSelectedProductOptions(product.productOptions.reduce((acc: {[key: string]: string}, curr: any) => {
+        console.log('**** creating selected options for : ', curr);
+        acc[curr.name] = curr.choices[0].description;
+        return acc;
+      }, {}));
+    }
+  }, [product]);
 
   useEffect(() => {
-    const newVariant = variants.find((variant) => {
-      return (
-        (variant.size === size || !size) && (variant.color === color || !color)
-      )
-    })
-
-    if (variant.id !== newVariant?.id) {
-      setVariant(newVariant)
-    }
-  }, [size, color, variants, variant.id])
+    console.log('*** product options changed : ', selectedProductOptions);
+  }, [selectedProductOptions])
 
   const addToCart = async () => {
     setLoading(true)
@@ -76,14 +66,12 @@ const ProductBox: React.FC<Props> = ({
       setLoading(false)
     }
   }
-  const allImages = images
-    .map(({ src }) => ({ src: src.src }))
-    .concat(
-      product.images &&
-        product.images.filter(
-          ({ src }) => !images.find((image) => image.src.src === src)
-        )
-    )
+  const allImages = product?.media?.items?.map(({image}: any) => ({
+    src: image.url
+  }));
+  if (product) {
+    console.log('*** showing product', product);
+  }
 
   return (
     <React.Fragment>
@@ -121,11 +109,6 @@ const ProductBox: React.FC<Props> = ({
               width={1050}
               height={1050}
               priority
-              onThumbnailClick={(index) => {
-                if (images[index]?.color) {
-                  setColor(images[index].color)
-                }
-              }}
               images={allImages?.length > 0 ? allImages: [{
                   src: `https://via.placeholder.com/1050x1050`,
                 }]}
@@ -136,30 +119,22 @@ const ProductBox: React.FC<Props> = ({
           <span sx={{ mt: 0, mb: 2 }}>
             <Themed.h1>{title}</Themed.h1>
             <Themed.h4 aria-label="price" sx={{ mt: 0, mb: 2 }}>
-              {getPrice(variant.priceV2.amount, variant.priceV2.currencyCode)}
+              {getPrice(product?.price)}
             </Themed.h4>
           </span>
           <div dangerouslySetInnerHTML={{ __html: description! }} />
           <div>
             <Grid padding={2} columns={2}>
-              {colors?.length && (
-                <OptionPicker
-                  key="Color"
-                  name="Color"
-                  options={colors}
-                  selected={color}
-                  onChange={(event) => setColor(event.target.value)}
-                />
-              )}
-              {sizes?.length && (
-                <OptionPicker
-                  key="Size"
-                  name="Size"
-                  options={sizes}
-                  selected={size}
-                  onChange={(event) => setSize(event.target.value)}
-                />
-              )}
+              {(product && selectedProductOptions) ? product.productOptions?.map((productOption: any) => (<OptionPicker
+                key={productOption.name}
+                name={productOption.name}
+                options={productOption.choices?.map((op: any) => op.description as string)}
+                selected={(selectedProductOptions![productOption.name])}
+                onChange={(event) => setSelectedProductOptions({
+                  ...(selectedProductOptions as any),
+                  [productOption.name]: event.target.value
+                })}
+              />)) : null}
             </Grid>
           </div>
           <Button
@@ -177,7 +152,7 @@ const ProductBox: React.FC<Props> = ({
 }
 
 const ProductView: React.FC<{
-  product: string | ShopifyBuy.Product
+  product: string | WixStoresProduct
   renderSeo?: boolean
   description?: string
   title?: string

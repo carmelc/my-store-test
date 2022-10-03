@@ -4,7 +4,7 @@ import React from 'react'
 import { Themed, jsx, Text, Card, Grid, Divider, NavLink } from 'theme-ui'
 import { FC, useEffect, useState } from 'react'
 import { Bag } from '@components/icons'
-import { useCart, useCheckoutUrl } from '@lib/shopify/storefront-data-hooks'
+import { useCart, useCheckoutUrl } from '@lib/wix/storefront-data-hooks'
 import CartItem from '../CartItem'
 import { BuilderComponent, builder } from '@builder.io/react'
 import env from '@config/env'
@@ -12,7 +12,7 @@ import env from '@config/env'
 const CartSidebarView: FC = () => {
   const checkoutUrl = useCheckoutUrl()
   const cart = useCart()
-  const subTotal = cart?.subtotalPrice
+  const subTotal = cart?.subtotal?.formattedAmount
   const total = ' - '
 
   const items = cart?.lineItems ?? []
@@ -26,7 +26,7 @@ const CartSidebarView: FC = () => {
         .get('cart-upsell-sidebar', {
           cacheSeconds: 120,
           userAttributes: {
-            itemInCart: items.map((item: any) => item.variant.product.handle),
+            itemInCart: items.map((item: any) => item.variant.product.slug),
           } as any,
         })
         .toPromise()

@@ -76,7 +76,7 @@ Builder.registerComponent(LazyProductGrid, {
       subFields: [
         {
           name: 'product',
-          type: `${isDemo ? 'ShopifyStore' : 'Shopify'}ProductHandle`,
+          type: `WixStoresProductHandle`,
         },
       ],
     },
@@ -90,7 +90,7 @@ Builder.registerComponent(LazyProductGrid, {
   inputs: [
     {
       name: 'collection',
-      type: `${isDemo ? 'ShopifyStore' : 'Shopify'}CollectionHandle`,
+      type: `WixStoresCollectionHandle`,
     },
   ].concat(productGridSchema),
 })

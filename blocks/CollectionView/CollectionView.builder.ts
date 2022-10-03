@@ -1,8 +1,6 @@
-import { Builder } from '@builder.io/react'
 import { Input } from '@builder.io/sdk'
 import dynamic from 'next/dynamic'
 import { productGridSchema } from '../ProductGrid/ProductGrid.builder'
-import builderConfig from '@config/builder'
 import { restrictedRegister } from 'blocks/utils'
 const LazyCollectionView = dynamic(() => import(`./CollectionView`))
 
@@ -41,10 +39,7 @@ restrictedRegister(
       .concat([
         {
           name: 'collection',
-          // ShopifyCollectionHandle is a custom type defined in @builder.io/plugin-shopify that let's the user pick a collection from a picker and resolves to it's handle
-          type: `${
-            builderConfig.isDemo ? 'ShopifyStore' : 'Shopify'
-          }CollectionHandle`,
+          type: 'WixStoresCollectionHandle',
         },
       ])
       .reverse(),

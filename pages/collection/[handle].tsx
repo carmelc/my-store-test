@@ -8,11 +8,11 @@ import { Layout } from '@components/common'
 import { BuilderComponent, Builder, builder } from '@builder.io/react'
 import { resolveBuilderContent } from '@lib/resolve-builder-content'
 import builderConfig from '@config/builder'
-import shopifyConfig from '@config/shopify'
+import wixConfig from '@config/wix'
 import {
   getCollection,
   getAllCollectionPaths,
-} from '@lib/shopify/storefront-data-hooks/src/api/operations'
+} from '@lib/wix/storefront-data-hooks/src/api/operations'
 import DefaultErrorPage from 'next/error'
 import Head from 'next/head'
 import { useThemeUI } from '@theme-ui/core'
@@ -25,7 +25,7 @@ export async function getStaticProps({
   params,
   locale,
 }: GetStaticPropsContext<{ handle: string }>) {
-  const collection = await getCollection(shopifyConfig, {
+  const collection = await getCollection(wixConfig, {
     handle: params?.handle,
   })
 
@@ -45,7 +45,9 @@ export async function getStaticProps({
 }
 
 export async function getStaticPaths({ locales }: GetStaticPathsContext) {
-  const paths = await getAllCollectionPaths(shopifyConfig)
+  // const paths = await getAllCollectionPaths(wixConfig)
+  //TODO: get the actual paths for SEO
+  const paths = [] as string[]
   return {
     paths: paths.map((path) => `/collection/${path}`),
     fallback: 'blocking',

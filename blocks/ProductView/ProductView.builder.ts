@@ -1,12 +1,10 @@
 import { restrictedRegister } from 'blocks/utils'
 import dynamic from 'next/dynamic'
 
+
 const isDemo = Boolean(process.env.IS_DEMO)
 const LazyProductView = dynamic(
-  () =>
-    isDemo
-      ? import(`blocks/ProductView/ProductViewDemo`)
-      : import(`blocks/ProductView/ProductView`),
+  () => import(`blocks/ProductView/ProductView`),
   { ssr: true }
 )
 
@@ -32,22 +30,22 @@ restrictedRegister(
 restrictedRegister(
   LazyProductView,
   {
-    name: 'ProductBox',
+    name: 'ProductWidget',
     inputs: [
       {
         name: 'product',
-        type: `${isDemo ? 'ShopifyStore' : 'Shopify'}ProductHandle`,
+        type: `WixStoresProductHandle`,
       },
       {
         name: 'description',
         richText: true,
         type: 'html',
-        helperText: 'Override product description from shopify',
+        helperText: 'Override product description',
       },
       {
         name: 'title',
         type: 'text',
-        helperText: 'Override product title from shopify',
+        helperText: 'Override product title',
       },
     ],
     image: 'https://unpkg.com/css.gg@2.0.0/icons/svg/ereader.svg',

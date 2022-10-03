@@ -1,11 +1,11 @@
 {
-  "title": "Builder.io + Shopify + Next.js",
+  "title": "Builder.io + Wix Stores + Next.js",
   "titleTemplate": "%s - Headless Demo",
-  "description": "A starter kit demo store for using headless shopify with Builder.io ->  https://github.com/BuilderIO/nextjs-shopify",
+  "description": "A starter kit demo store for using headless Wix Stores with Builder.io",
   "openGraph": {
     "type": "website",
     "locale": "en_IE",
-    "url": "https://github.com/BuilderIO/nextjs-shopify",
-    "site_name": "Builder.io + Shopify + Next.js"
+    "url": "https://github.com/carmelc/nextjs-wix-stores-test",
+    "site_name": "Builder.io + Wix Stores + Next.js"
   }
 }

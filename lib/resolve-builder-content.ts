@@ -1,11 +1,11 @@
 import { builder } from '@builder.io/react'
 import { getAsyncProps } from '@builder.io/utils'
 import builderConfig from '@config/builder'
-import shopifyConfig from '@config/shopify'
+import shopifyConfig from '@config/wix'
 import {
   getCollection,
   getProduct,
-} from './shopify/storefront-data-hooks/src/api/operations'
+} from './wix/storefront-data-hooks/src/api/operations'
 builder.init(builderConfig.apiKey)
 
 export async function resolveBuilderContent(

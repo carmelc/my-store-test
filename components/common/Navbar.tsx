@@ -4,7 +4,7 @@ import React, { FC, useState, useEffect } from 'react'
 import Link from 'next/link'
 import { UserNav } from '@components/common'
 import { BuilderComponent, builder } from '@builder.io/react'
-import { useCart } from '@lib/shopify/storefront-data-hooks'
+import { useCart } from '@lib/wix/storefront-data-hooks'
 import { jsx, Themed, useThemeUI } from 'theme-ui'
 import { useUI } from '@components/ui/context'
 import Image from 'next/image'
@@ -23,7 +23,7 @@ const Navbar: FC = () => {
         .get('announcement-bar', {
           cacheSeconds: 120,
           userAttributes: {
-            itemInCart: items.map((item: any) => item.variant.product.handle),
+            itemInCart: items.map((item: any) => item.variant.product.slug),
           } as any,
         })
         .toPromise()

@@ -4,14 +4,14 @@ import React, { FC, useState, useEffect } from 'react'
 import { NextSeo } from 'next-seo'
 import { Themed, jsx } from 'theme-ui'
 import { LoadingDots } from '@components/ui'
-import shopifyConfig from '@config/shopify'
+import wixConfig from '@config/wix'
 import { ProductGrid, ProductGridProps } from '../ProductGrid/ProductGrid'
-import { getCollection } from '@lib/shopify/storefront-data-hooks/src/api/operations'
+import { getCollection } from '@lib/wix/storefront-data-hooks/src/api/operations'
 
 interface Props {
   className?: string
   children?: any
-  collection: string | any // ShopifyBuy.Collection once their types are up to date
+  collection: string | any
   productGridOptions: ProductGridProps
   renderSeo?: boolean
 }
@@ -29,7 +29,7 @@ const CollectionPreview: FC<Props> = ({
   useEffect(() => {
     const fetchCollection = async () => {
       setLoading(true)
-      const result = await getCollection(shopifyConfig, {
+      const result = await getCollection(wixConfig, {
         handle: collection,
       })
       setCollection(result)

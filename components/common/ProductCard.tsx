@@ -3,12 +3,11 @@
 import { Themed, jsx } from 'theme-ui'
 import { Card, Text } from '@theme-ui/components'
 import { Link, ImageCarousel } from '@components/ui'
-import { getPrice } from '@lib/shopify/storefront-data-hooks/src/utils/product'
-import { useState } from 'react'
+import { WixStoresProduct } from '@lib/wix-types';
 
 export interface ProductCardProps {
   className?: string
-  product: ShopifyBuy.Product
+  product: WixStoresProduct
   imgWidth: number | string
   imgHeight: number | string
   imgLayout?: 'fixed' | 'intrinsic' | 'responsive' | undefined
@@ -26,12 +25,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
   imgSizes,
   imgLayout = 'responsive',
 }) => {
-  const handle = (product as any).handle
-  const productVariant: any = product.variants[0]
-  const price = getPrice(
-    productVariant.priceV2.amount,
-    productVariant.priceV2.currencyCode
-  )
+  const handle = product.slug
+  const price = product.formattedPrice;
 
   return (
     <Card
@@ -45,24 +40,22 @@ const ProductCard: React.FC<ProductCardProps> = ({
       <Link href={`/product/${handle}/`}>
         <div sx={{ flexGrow: 1 }}>
           <ImageCarousel
-            currentSlide={product.images ? product.images.length - 1 : 0}
+            currentSlide={0}
             width={imgWidth}
             height={imgHeight}
             priority={imgPriority}
             loading={imgLoading}
             layout={imgLayout}
             sizes={imgSizes}
-            alt={product.title}
+            alt={product.name}
             images={
-              product.images.length ? product.images : [{
-                src: `https://via.placeholder.com/${imgWidth}x${imgHeight}`,
-              }]
+              product.mainMedia ?  [{ src: product.mainMedia }] : []
             }
           />
         </div>
         <div sx={{ textAlign: 'center' }}>
           <Themed.h2 sx={{ mt: 4, mb: 0, fontSize: 14 }}>
-            {product.title}
+            {product.name}
           </Themed.h2>
           <Text sx={{ fontSize: 12, mb: 2 }}>{price}</Text>
         </div>

@@ -5,17 +5,17 @@ import React, { ChangeEvent, useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Plus, Minus } from '@components/icons'
-import { getPrice } from '@lib/shopify/storefront-data-hooks/src/utils/product'
+import { getPrice } from '@lib/wix/storefront-data-hooks/src/utils/product'
 import {
   useUpdateItemQuantity,
   useRemoveItemFromCart,
-} from '@lib/shopify/storefront-data-hooks'
+} from '@lib/wix/storefront-data-hooks'
 
 const CartItem = ({
   item,
   currencyCode,
 }: {
-  item: /*ShopifyBuy.LineItem todo: check if updated types*/ any
+  item: any
   currencyCode: string
 }) => {
   const updateItem = useUpdateItemQuantity()
@@ -89,7 +89,7 @@ const CartItem = ({
       <div>
         <Themed.div
           as={Link}
-          href={`/product/${item.variant.product.handle}/`}
+          href={`/product/${item.variant.product.slug}/`}
           sx={{ fontSize: 3, m: 0, fontWeight: 700 }}
         >
           <>
@@ -104,7 +104,6 @@ const CartItem = ({
             >
               {getPrice(
                 item.variant.priceV2.amount,
-                item.variant.priceV2.currencyCode || 'USD'
               )}
             </Text>
           </>
@@ -147,7 +146,7 @@ const CartItem = ({
 }
 
 /**
- *         
+ *
 
  */
 

@@ -4,13 +4,12 @@ import { Themed, jsx } from 'theme-ui'
 import Image from 'next/image'
 import { Card, Text } from '@theme-ui/components'
 import { Link } from '@components/ui'
-import { getPrice } from '@lib/shopify/storefront-data-hooks/src/utils/product'
 import { useState } from 'react'
-import NoSSR from './NoSSR'
+import { WixStoresProduct } from '@lib/wix-types';
 
 export interface ProductCardProps {
   className?: string
-  product: ShopifyBuy.Product
+  product: WixStoresProduct
   imgWidth: number | string
   imgHeight: number | string
   imgLayout?: 'fixed' | 'intrinsic' | 'responsive' | undefined
@@ -30,14 +29,12 @@ const ProductCardDemo: React.FC<ProductCardProps> = ({
 }) => {
   const [showAlternate, setShowAlternate] = useState(false)
   const [canToggle, setCanToggle] = useState(false)
-  const src = product.images[0].src
+  const src = product.mainMedia;
   const handle = (product as any).handle
-  const productVariant: any = product.variants[0]
-  const price = getPrice(
-    productVariant.compare_at_price || productVariant.price,
-    'USD'
-  )
-  const alternateImage = product.images[1]?.src
+  const price = product.formattedPrice
+  if (product) {
+    console.log('*** showing product demo', product);
+  }
 
   return (
     <Card
@@ -52,35 +49,12 @@ const ProductCardDemo: React.FC<ProductCardProps> = ({
     >
       <Link href={`/product/${handle}/`}>
         <div sx={{ flexGrow: 1 }}>
-          {alternateImage && (
-            <div
-              sx={{ display: showAlternate && canToggle ? 'block' : 'none' }}
-            >
-              <NoSSR>
-                <Image
-                  quality="85"
-                  src={alternateImage}
-                  alt={product.title}
-                  width={imgWidth || 540}
-                  sizes={imgSizes}
-                  height={imgHeight || 540}
-                  layout={imgLayout}
-                  onLoad={() => setCanToggle(true)}
-                  loading="eager"
-                />
-              </NoSSR>
-            </div>
-          )}
           <div
-            sx={{
-              display:
-                canToggle && showAlternate && alternateImage ? 'none' : 'block',
-            }}
           >
             <Image
               quality="85"
               src={src}
-              alt={product.title}
+              alt={product.name}
               width={imgWidth || 540}
               sizes={imgSizes}
               height={imgHeight || 540}
@@ -92,7 +66,7 @@ const ProductCardDemo: React.FC<ProductCardProps> = ({
         </div>
         <div sx={{ textAlign: 'center' }}>
           <Themed.h2 sx={{ mt: 4, mb: 0, fontSize: 14 }}>
-            {product.title}
+            {product.name}
           </Themed.h2>
           <Text sx={{ fontSize: 12, mb: 2 }}>{price}</Text>
         </div>

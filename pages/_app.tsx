@@ -14,26 +14,14 @@ import '../blocks/ProductView/ProductView.builder'
 import '../blocks/CloudinaryImage/CloudinaryImage.builder'
 
 Builder.register('insertMenu', {
-  name: 'Shopify Collections Components',
+  name: 'Wix Stores Components',
   items: [
+    { name: 'ProductWidget' },
     { name: 'CollectionBox', label: 'Collection stuff' },
+    { name: 'ProductGrid' },
     { name: 'ProductCollectionGrid' },
     { name: 'CollectionView' },
   ],
-})
-
-Builder.register('insertMenu', {
-  name: 'Shopify Products Components',
-  items: [
-    { name: 'ProductGrid' },
-    { name: 'ProductBox' },
-    { name: 'ProductView' },
-  ],
-})
-
-Builder.register('insertMenu', {
-  name: 'Cloudinary Components',
-  items: [{ name: 'CloudinaryImage' }],
 })
 
 const Noop: FC = ({ children }) => <>{children}</>
