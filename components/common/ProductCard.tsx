@@ -4,6 +4,7 @@ import { Themed, jsx } from 'theme-ui'
 import { Card, Text } from '@theme-ui/components'
 import { Link, ImageCarousel } from '@components/ui'
 import { WixStoresProduct } from '@lib/wix-types';
+import {getPrice} from "@lib/wix/storefront-data-hooks/src/utils/product";
 
 export interface ProductCardProps {
   className?: string
@@ -26,7 +27,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   imgLayout = 'responsive',
 }) => {
   const handle = product.slug
-  const price = product.formattedPrice;
+  const price = getPrice(product?.price);
 
   return (
     <Card
@@ -49,7 +50,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             sizes={imgSizes}
             alt={product.name}
             images={
-              product.mainMedia ?  [{ src: product.mainMedia }] : []
+              product?.media?.mainMedia?.image?.url ?  [{ src: product?.media?.mainMedia?.image?.url }] : []
             }
           />
         </div>

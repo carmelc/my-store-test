@@ -46,17 +46,19 @@ const fetcher = async (config: WixStoresConfig): Promise<{ wixClient: clientType
     url: string;
     method: 'GET' | 'POST';
     variables?: any;
-  }) => handleFetchResponse(
-    await fetch(url[0] === '/' ? url : `${API_URL}/${url}`, {
-      method,
-      ...(variables && {body: variables}),
-      headers: {
-        'origin': config.domain!,
-        'Authorization': accessToken!,
-        'Content-Type': 'application/json'
-      }
-    })
-  )
+  }) => {
+    return handleFetchResponse(
+      await fetch(url[0] === '/' ? url : `${API_URL}/${url}`, {
+        method,
+        ...(variables && {body: variables}),
+        headers: {
+          'origin': config.domain!,
+          'Authorization': wixSession.accessToken!,
+          'Content-Type': 'application/json'
+        }
+      }))
+  }
+
 
   return {wixClient, legacyFetch}
 }

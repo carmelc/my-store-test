@@ -46,9 +46,7 @@ export async function getStaticProps({
 }
 
 export async function getStaticPaths({ locales }: GetStaticPathsContext) {
-  // const paths = await getAllProductPaths(wixConfig)
-  //TODO: get the actual paths for SEO
-  const paths = [] as string[]
+  const paths = await getAllProductPaths(wixConfig)
   return {
     paths: paths.map((path) => `/product/${path}`),
     fallback: 'blocking',

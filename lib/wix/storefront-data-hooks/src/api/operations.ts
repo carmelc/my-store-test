@@ -89,5 +89,6 @@ export async function searchProducts(
   searchString: string,
 ) {
   const products: any[] = await getAllProducts(config);
-  return products.filter(({name}) => name.indexOf(searchString) > -1);
+  const searchLowerCase = searchString.toLowerCase();
+  return products.filter(({name}) => name.toLowerCase().indexOf(searchLowerCase) > -1);
 }

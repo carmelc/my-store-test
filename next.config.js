@@ -24,7 +24,8 @@ module.exports = bundleAnalyzer({
   env: {
     // expose env to the browser
     WIX_API_KEY: process.env.WIX_API_KEY,
-    WIX_SITE_DOMAIN: process.env.WIX_SITE_DOMAIN,
+    WIX_API_DOMAIN: process.env.WIX_API_DOMAIN,
+    WIX_SITE_URL: process.env.WIX_SITE_URL,
     BUILDER_PUBLIC_KEY: process.env.BUILDER_PUBLIC_KEY,
     IS_DEMO: process.env.IS_DEMO,
   },

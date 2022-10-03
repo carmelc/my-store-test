@@ -1,7 +1,7 @@
 import { builder } from '@builder.io/react'
 import { getAsyncProps } from '@builder.io/utils'
 import builderConfig from '@config/builder'
-import shopifyConfig from '@config/wix'
+import wixConfig from '@config/wix'
 import {
   getCollection,
   getProduct,
@@ -30,7 +30,7 @@ export async function resolveBuilderContent(
             .filter((handle: string | undefined) => typeof handle === 'string')
             .map(
               async (handle: string) =>
-                await getProduct(shopifyConfig, { handle })
+                await getProduct(wixConfig, { handle })
             )
           products = await Promise.all(promises)
         }
@@ -43,7 +43,7 @@ export async function resolveBuilderContent(
       async CollectionBox(props) {
         let collection = props.collection
         if (collection && typeof collection === 'string') {
-          collection = await getCollection(shopifyConfig, {
+          collection = await getCollection(wixConfig, {
             handle: collection,
           })
         }
@@ -54,7 +54,7 @@ export async function resolveBuilderContent(
       async ProductBox(props) {
         let product = props.product
         if (product && typeof product === 'string') {
-          product = await getProduct(shopifyConfig, {
+          product = await getProduct(wixConfig, {
             handle: product,
           })
         }
@@ -65,7 +65,7 @@ export async function resolveBuilderContent(
 
       async ProductCollectionGrid({ collection }) {
         if (collection && typeof collection === 'string') {
-          const { products } = await getCollection(shopifyConfig, {
+          const { products } = await getCollection(wixConfig, {
             handle: collection,
           })
           return {

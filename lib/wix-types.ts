@@ -1,7 +1,7 @@
 export type WixStoresProduct = {
   _id: string;
-  formattedPrice: string;
-  mainMedia: string;
+  price: { formatted: { price: string } };
+  media: { mainMedia: { image: { url: string } } };
   slug: string;
   name: string;
 };
@@ -14,6 +14,7 @@ export type WixStoresCollection = {
 
 export interface WixStoresConfig {
   domain: string;
+  wixSiteUrl: string;
   storefrontAccessToken: string;
   language?: string;
 }

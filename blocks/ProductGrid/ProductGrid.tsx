@@ -5,7 +5,7 @@ import { LoadingDots } from '@components/ui'
 import { jsx } from 'theme-ui'
 import { Grid } from '@theme-ui/components'
 import { ProductCardProps } from '@components/common/ProductCard'
-import { ProductCardDemo, ProductCard } from '@components/common'
+import { ProductCard } from '@components/common'
 
 import {
   getCollection,
@@ -73,14 +73,11 @@ export const ProductGrid: FC<ProductGridProps> = ({
   if (loading) {
     return <LoadingDots />
   }
-  const ProductComponent: any = process.env.IS_DEMO
-    ? ProductCardDemo
-    : ProductCard
 
   return (
     <Grid gap={2} width={['100%', '40%', '24%']}>
       {products.slice(offset, limit).map((product, i) => (
-        <ProductComponent
+        <ProductCard
           key={String(product._id) + i}
           {...(highlightCard?.index === i ? highlightCard : cardProps)}
           product={product}
