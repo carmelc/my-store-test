@@ -27,9 +27,6 @@ const ProductBox: React.FC<Props> = ({
   description = product.description,
   title = product.name,
 }) => {
-  if (product) {
-    console.log('*** showing product: ', product);
-  }
   const [loading, setLoading] = useState(false)
   const addItem = useAddItemToCart()
 
@@ -45,16 +42,11 @@ const ProductBox: React.FC<Props> = ({
   useEffect(() => {
     if (product?.productOptions) {
       setSelectedProductOptions(product.productOptions.reduce((acc: {[key: string]: string}, curr: any) => {
-        console.log('**** creating selected options for : ', curr);
         acc[curr.name] = curr.choices[0].description;
         return acc;
       }, {}));
     }
   }, [product]);
-
-  useEffect(() => {
-    console.log('*** product options changed : ', selectedProductOptions);
-  }, [selectedProductOptions])
 
   const addToCart = async () => {
     setLoading(true)
@@ -69,9 +61,6 @@ const ProductBox: React.FC<Props> = ({
   const allImages = product?.media?.items?.map(({image}: any) => ({
     src: image.url
   }));
-  if (product) {
-    console.log('*** showing product', product);
-  }
 
   return (
     <React.Fragment>

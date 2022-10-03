@@ -32,9 +32,6 @@ const ProductCardDemo: React.FC<ProductCardProps> = ({
   const src = product.mainMedia;
   const handle = (product as any).handle
   const price = product.formattedPrice
-  if (product) {
-    console.log('*** showing product demo', product);
-  }
 
   return (
     <Card
