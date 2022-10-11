@@ -48,13 +48,19 @@ export async function getProduct(
   options: { id?: string; handle?: string }
 ) {
   const products: any[] = await getAllProducts(config);
+  let result = {};
   if (options.handle) {
-    return fastClone(products.find(({ slug }) => slug === options.handle))
+    result = products.find(({ slug }) => slug === options.handle)
   } else if (options.id) {
-    return fastClone(products.find(({ id }) => id=== options.id))
+    result = products.find(({ id }) => id=== options.id)
   } else {
     throw new Error('A product ID or handle is required')
   }
+  if (!result) {
+    console.error('Product was not found for options', options)
+    throw new Error('Product was not found for options')
+  }
+  return fastClone(result)
 }
 
 export async function getAllCollections(config: WixStoresConfig, limit?: number) {
