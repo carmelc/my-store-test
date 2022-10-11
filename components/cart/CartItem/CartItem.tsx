@@ -3,27 +3,24 @@
 import { Themed, jsx, Grid, Button, Input, Text, IconButton } from 'theme-ui'
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
 import { Plus, Minus } from '@components/icons'
-import { getPrice } from '@lib/wix/storefront-data-hooks/src/utils/product'
 import {
   useUpdateItemQuantity,
   useRemoveItemFromCart,
 } from '@lib/wix/storefront-data-hooks'
+import type { LineItem } from "@wix/ecom/build/cjs/src/ecom-v1-cart-cart.universal";
 
 const CartItem = ({
   item,
-  currencyCode,
 }: {
-  item: any
-  currencyCode: string
+  item: LineItem
 }) => {
   const updateItem = useUpdateItemQuantity()
   const removeItem = useRemoveItemFromCart()
   const [quantity, setQuantity] = useState(item.quantity)
   const [removing, setRemoving] = useState(false)
   const updateQuantity = async (quantity: number) => {
-    await updateItem(item.variant.id, quantity)
+    await updateItem(item._id!, quantity)
   }
   const handleQuantity = (e: ChangeEvent<HTMLInputElement>) => {
     const val = Number(e.target.value)
@@ -53,7 +50,7 @@ const CartItem = ({
     try {
       // If this action succeeds then there's no need to do `setRemoving(true)`
       // because the component will be removed from the view
-      await removeItem(item.variant.id)
+      await removeItem(item._id!)
     } catch (error) {
       console.error(error)
       setRemoving(false)
@@ -78,22 +75,18 @@ const CartItem = ({
           alignItems: 'center',
         }}
       >
-        <Image
+        {item.image ? <Image
           height={130}
           width={130}
           unoptimized
-          alt={item.variant.image.altText}
-          src={item.variant.image.src}
-        />
+          alt={item.productName?.original}
+          src={item.image!}
+        /> : null}
       </div>
       <div>
-        <Themed.div
-          as={Link}
-          href={`/product/${item.variant.product.slug}/`}
-          sx={{ fontSize: 3, m: 0, fontWeight: 700 }}
-        >
+
           <>
-            {item.title}
+            {item.productName?.original}
             <Text
               sx={{
                 fontSize: 4,
@@ -102,12 +95,9 @@ const CartItem = ({
                 marginLeft: 'auto',
               }}
             >
-              {getPrice(
-                item.variant.priceV2.amount,
-              )}
+              {item.price?.formattedAmount ?? '0.00'}
             </Text>
           </>
-        </Themed.div>
         <Themed.ul sx={{ mt: 2, mb: 0, padding: 0, listStyle: 'none' }}>
           <li>
             <div sx={{ display: 'flex', justifyItems: 'center' }}>
@@ -134,9 +124,9 @@ const CartItem = ({
               </IconButton>
             </div>
           </li>
-          {item.variant.selectedOptions.map((option: any) => (
-            <li key={option.value}>
-              {option.name}:{option.value}
+          {Object.keys(item.catalogReference?.options ?? {}).map((optionKey: any) => (
+            <li key={optionKey}>
+              {optionKey}:{item.catalogReference?.options![optionKey]}
             </li>
           ))}
         </Themed.ul>

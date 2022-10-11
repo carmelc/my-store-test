@@ -1,21 +1,19 @@
 import React from 'react'
-import { Cart } from '@wix/ecom/build/cjs/src/ecom-v1-cart-cart.universal';
+import type { Cart, LineItem } from '@wix/ecom/build/cjs/src/ecom-v1-cart-cart.universal';
+import {clientTypes} from "@lib/wix/client-builder";
 
 interface ContextShape {
-  // TODO: client API
-  client: any;
+  setCart: (cart: Cart) => void
   cart: Cart | null
-  setCart: React.Dispatch<React.SetStateAction<Cart | null>>
   domain: string
   storefrontAccessToken: string
+  client: clientTypes | null
 }
 
 export const Context = React.createContext<ContextShape>({
-  client: null,
+  setCart: () => {},
   cart: null,
   domain: '',
   storefrontAccessToken: '',
-  setCart: () => {
-    throw Error('You forgot to wrap this in a Provider object')
-  },
+  client: null,
 })

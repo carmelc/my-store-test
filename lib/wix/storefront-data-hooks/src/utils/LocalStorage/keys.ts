@@ -1,5 +1,5 @@
-const CART = 'shopify_local_store__cart'
-const CHECKOUT_ID = 'shopify_local_store__checkout_id'
+const CART = 'wix-storage-key__cart'
+const CHECKOUT_ID = 'wix-storage-key__checkout_id'
 
 export const LocalStorageKeys = {
   CART,

@@ -10,7 +10,7 @@ import { Button } from 'theme-ui'
 import { Sidebar } from '@components/ui'
 import { CartSidebarView } from '@components/cart'
 import { CommerceProvider } from '@lib/wix/storefront-data-hooks'
-import shopifyConfig from '@config/wix'
+import wixConfig from '@config/wix'
 import { builder, BuilderContent, Builder } from '@builder.io/react'
 import themesMap from '@config/theme'
 import '@builder.io/widgets'
@@ -26,7 +26,7 @@ const Layout: React.FC<{ pageProps: any }> = ({ children, pageProps }) => {
   const builderTheme = pageProps.theme
   const isLive = !Builder.isEditing && !Builder.isPreviewing
   return (
-    <CommerceProvider {...shopifyConfig}>
+    <CommerceProvider config={wixConfig}>
       <BuilderContent
         isStatic
         {...(isLive && { content: builderTheme })}

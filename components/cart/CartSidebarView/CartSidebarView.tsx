@@ -26,7 +26,7 @@ const CartSidebarView: FC = () => {
         .get('cart-upsell-sidebar', {
           cacheSeconds: 120,
           userAttributes: {
-            itemInCart: items.map((item: any) => item.variant.product.slug),
+            itemInCart: items.map((item: any) => item._id),
           } as any,
         })
         .toPromise()
@@ -54,9 +54,6 @@ const CartSidebarView: FC = () => {
         <>
           <Bag />
           Your cart is empty
-          <Text>
-            Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.
-          </Text>
         </>
       ) : (
         <>
@@ -64,8 +61,6 @@ const CartSidebarView: FC = () => {
             <CartItem
               key={item.id}
               item={item}
-              // todo update types
-              currencyCode={item.variant?.priceV2?.currencyCode || 'USD'}
             />
           ))}
           <Card sx={{ marginLeft: 'auto', minWidth: '10rem', paddingLeft: 5 }}>

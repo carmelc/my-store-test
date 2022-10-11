@@ -7,7 +7,7 @@ import OptionPicker from '@components/common/OptionPicker'
 import { NextSeo } from 'next-seo'
 import { useUI } from '@components/ui/context'
 import { useAddItemToCart } from '@lib/wix/storefront-data-hooks'
-import { prepareVariantsWithOptions, getPrice } from '@lib/wix/storefront-data-hooks/src/utils/product'
+import {getPrice, toWixStoresLineItem} from '@lib/wix/storefront-data-hooks/src/utils/product'
 import { ImageCarousel, LoadingDots } from '@components/ui'
 import ProductLoader from './ProductLoader'
 import {WixStoresProduct} from "@lib/wix-types";
@@ -30,19 +30,13 @@ const ProductBox: React.FC<Props> = ({
   const [loading, setLoading] = useState(false)
   const addItem = useAddItemToCart()
 
-  const variants = useMemo(
-    () => prepareVariantsWithOptions(product?.variants),
-    [product?.variants]
-  )
-
   const { openSidebar } = useUI()
 
-  const [variant, setVariant] = useState(variants?.[0] || {})
   const [selectedProductOptions, setSelectedProductOptions] = useState<any>({});
   useEffect(() => {
     if (product?.productOptions) {
       setSelectedProductOptions(product.productOptions.reduce((acc: {[key: string]: string}, curr: any) => {
-        acc[curr.name] = curr.choices[0].description;
+        acc[curr.name] = curr.choices[0];
         return acc;
       }, {}));
     }
@@ -51,7 +45,7 @@ const ProductBox: React.FC<Props> = ({
   const addToCart = async () => {
     setLoading(true)
     try {
-      await addItem(variant.id, 1)
+      await addItem(toWixStoresLineItem(product, selectedProductOptions))
       openSidebar()
       setLoading(false)
     } catch (err) {
@@ -117,11 +111,11 @@ const ProductBox: React.FC<Props> = ({
               {(product && selectedProductOptions) ? product.productOptions?.map((productOption: any) => (<OptionPicker
                 key={productOption.name}
                 name={productOption.name}
-                options={productOption.choices?.map((op: any) => op.description as string)}
-                selected={(selectedProductOptions![productOption.name])}
+                options={productOption.choices?.filter(({inStock, visible}: any) => inStock && visible).map((op: any) => op.description as string)}
+                selected={(selectedProductOptions![productOption.name]?.description)}
                 onChange={(event) => setSelectedProductOptions({
                   ...(selectedProductOptions as any),
-                  [productOption.name]: event.target.value
+                  [productOption.name]: productOption.choices?.find(({description}: {description: string}) => description === event.target.value)
                 })}
               />)) : null}
             </Grid>

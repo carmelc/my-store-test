@@ -1,6 +1,6 @@
 import { LocalStorageKeys } from './keys'
 import { isCart } from '../../utils'
-import { Cart } from '@wix/ecom/build/cjs/src/ecom-v1-cart-cart.universal';
+import type { Cart } from '@wix/ecom/build/cjs/src/ecom-v1-cart-cart.universal';
 
 function set(key: string, value: string) {
   const isBrowser = typeof window !== 'undefined'
@@ -45,8 +45,13 @@ function getInitialCart(): Cart | null {
   }
 }
 
+function setInitialCart(cart: Cart): void {
+  set(LocalStorageKeys.CART, JSON.stringify(cart))
+}
+
 export const LocalStorage = {
   get,
   set,
   getInitialCart,
+  setInitialCart,
 }

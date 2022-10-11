@@ -62,7 +62,7 @@
     "@types/traverse": "^0.6.32",
     "@vercel/fetch": "^6.1.0",
     "@wix/data-backend-public-sdk-poc": "^1.0.7",
-    "@wix/ecom": "^1.0.53",
+    "@wix/ecom": "^1.0.57",
     "@wix/sdk": "^1.1.8",
     "atob": "^2.1.2",
     "body-scroll-lock": "^3.1.5",
@@ -93,7 +93,8 @@
     "react-ticker": "^1.2.2",
     "tailwindcss": "^1.9",
     "theme-ui": "^0.6.2",
-    "traverse": "^0.6.6"
+    "traverse": "^0.6.6",
+    "tslib": "^2.4.0"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^10.0.1",

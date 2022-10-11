@@ -9,6 +9,7 @@ import { jsx, Themed, useThemeUI } from 'theme-ui'
 import { useUI } from '@components/ui/context'
 import Image from 'next/image'
 import Searchbar from './Searchbar'
+import {LineItem} from "@wix/ecom/build/es/src/ecom-v1-cart-cart.universal";
 
 const Navbar: FC = () => {
   const [announcement, setAnnouncement] = useState()
@@ -18,12 +19,12 @@ const Navbar: FC = () => {
 
   useEffect(() => {
     async function fetchContent() {
-      const items = cart?.lineItems || []
+      const items: LineItem[] = cart?.lineItems || []
       const anouncementContent = await builder
         .get('announcement-bar', {
           cacheSeconds: 120,
           userAttributes: {
-            itemInCart: items.map((item: any) => item.variant.product.slug),
+            itemInCart: items.map((item: any) => item._id),
           } as any,
         })
         .toPromise()

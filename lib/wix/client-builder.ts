@@ -1,6 +1,6 @@
 import {WIX_ACCESS_TOKEN_COOKIE, WIX_REFRESH_TOKEN_COOKIE, WIX_COOKIE_EXPIRE, API_URL} from './const'
 import Cookies from 'js-cookie'
-// import { cart } from '@wix/ecom'
+import { cart, checkout } from '@wix/ecom/build/cjs'
 // import {data} from '@wix/data-backend-public-sdk-poc'
 import {createClient, session} from '@wix/sdk';
 import {WixStoresConfig} from "@lib/wix-types";
@@ -25,7 +25,9 @@ const handleFetchResponse = async (res: Response) => {
 
 const wixClient = createClient({
   // data,
-  data: {}
+  data: {},
+  cart,
+  checkout,
 })
 
 export type clientTypes = typeof wixClient

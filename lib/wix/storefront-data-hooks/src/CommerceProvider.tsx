@@ -3,71 +3,41 @@ import { Context } from './Context'
 import { LocalStorage, LocalStorageKeys } from './utils'
 import { WixStoresConfig } from "@lib/wix-types";
 import { Cart } from '@wix/ecom/build/cjs/src/ecom-v1-cart-cart.universal';
+import {createClient} from "@wix/sdk";
+import clientBuilder, {clientTypes} from "@lib/wix/client-builder";
 
 
-export interface CommerceProviderProps extends WixStoresConfig {
+export interface CommerceProviderProps {
+  config: WixStoresConfig
   children: React.ReactNode
 }
 
-export function CommerceProvider({
-  storefrontAccessToken,
-  domain,
-  children,
-}: CommerceProviderProps) {
+export function CommerceProvider(props: CommerceProviderProps) {
+  const {
+    config: {
+      storefrontAccessToken,
+      domain
+    },
+    children,
+  } = props;
   if (domain == null || storefrontAccessToken == null) {
     throw new Error(
-      'Unable to build shopify-buy client object. Please make sure that your access token and domain are correct.'
+      'Unable to build wix stores client object. Please make sure that your access token and domain are correct.'
     )
   }
 
   const initialCart = LocalStorage.getInitialCart()
   const [cart, setCart] = useState<Cart | null>(initialCart)
+  const [client, setClient] = useState<clientTypes | null>(null);
 
-  const isCustomDomain = domain.includes('.')
-
-  // TODO init wix client
-  const client: any = {
-    checkout: {
-      create: async () => ({}),
-      fetch: async (id: string) => ({}),
-    }
-  };
+  clientBuilder(props.config).then(clientInstance => {
+    setClient(clientInstance.wixClient);
+  })
 
   useEffect(() => {
-    async function getNewCart() {
-      const newCart = await client.checkout.create()
-      setCart(newCart)
+    if (cart) {
+      LocalStorage.setInitialCart(cart)
     }
-
-    async function refreshExistingCart(cartId: string) {
-      try {
-        const refreshedCart = await client.checkout.fetch(cartId)
-
-        if (refreshedCart == null) {
-          return getNewCart()
-        }
-
-        const cartHasBeenPurchased = Boolean(refreshedCart.completedAt)
-
-        if (cartHasBeenPurchased) {
-          getNewCart()
-        } else {
-          setCart(refreshedCart)
-        }
-      } catch (error) {
-        console.error(error)
-      }
-    }
-
-    if (cart == null) {
-      getNewCart()
-    } else {
-      refreshExistingCart(String(cart._id))
-    }
-  }, [])
-
-  useEffect(() => {
-    LocalStorage.set(LocalStorageKeys.CART, JSON.stringify(cart))
   }, [cart])
 
   return (

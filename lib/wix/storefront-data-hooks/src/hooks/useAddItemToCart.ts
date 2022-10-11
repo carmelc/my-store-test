@@ -1,17 +1,15 @@
 import { useAddItemsToCart } from './useAddItemsToCart'
-import { AttributeInput } from '../types'
+import {LineItem} from "@wix/ecom/build/cjs/src/ecom-v1-cart-cart.universal";
 
 export function useAddItemToCart() {
   const addItemsToCart = useAddItemsToCart()
 
   async function addItemToCart(
-    variantId: number | string,
-    quantity: number,
-    customAttributes?: AttributeInput[]
+    item: LineItem
   ) {
-    const item = [{ variantId, quantity, customAttributes }]
+    const items = [item]
 
-    return addItemsToCart(item)
+    return addItemsToCart(items)
   }
 
   return addItemToCart

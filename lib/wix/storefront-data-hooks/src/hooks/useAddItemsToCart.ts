@@ -1,14 +1,13 @@
 import { useContext } from 'react'
 import { Context } from '../Context'
-import { LineItemPatch } from '../types'
-import { Cart, LineItem } from '@wix/ecom/build/cjs/src/ecom-v1-cart-cart.universal';
+import type { LineItem } from '@wix/ecom/build/cjs/src/ecom-v1-cart-cart.universal';
 
 export function useAddItemsToCart() {
   const { client, cart, setCart } = useContext(Context)
 
-  async function addItemsToCart(items: LineItemPatch[]) {
-    if (cart == null || client == null) {
-      throw new Error('Called addItemsToCart too soon')
+  async function addItemsToCart(items: LineItem[]) {
+    if (client == null) {
+      throw new Error('Called addItemsToCart too soon, client was not init yet')
     }
 
     if (items.length < 1) {
@@ -16,34 +15,13 @@ export function useAddItemsToCart() {
         'Must include at least one line item, empty line items found'
       )
     }
-
-    items.forEach((item) => {
-      if (item.variantId == null) {
-        throw new Error(`Missing variantId in item`)
-      }
-
-      if (item.quantity == null) {
-        throw new Error(
-          `Missing quantity in item with variant id: ${item.variantId}`
-        )
-      } else if (typeof item.quantity != 'number') {
-        throw new Error(
-          `Quantity is not a number in item with variant id: ${item.variantId}`
-        )
-      } else if (item.quantity < 1) {
-        throw new Error(
-          `Quantity must not be less than one in item with variant id: ${item.variantId}`
-        )
-      }
-    })
-
-    const newCart = await client.checkout.addLineItems(
-      cart._id ?? '',
-      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-      // @ts-ignore
-      items as any[]
-    )
-    setCart(newCart)
+    if (!cart) {
+      const newCartResult = await client.cart.createCart({ lineItems: items });
+      setCart(newCartResult);
+    } else {
+      const updatedCartResult = await client.cart.addToCart(cart._id!, { lineItems: items });
+      setCart(updatedCartResult!.cart!);
+    }
   }
 
   return addItemsToCart

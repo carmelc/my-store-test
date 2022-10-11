@@ -14,7 +14,7 @@ export type WixStoresCollection = {
 
 export interface WixStoresConfig {
   domain: string;
-  wixSiteUrl: string;
+  wixSiteCheckoutUrl: string;
   storefrontAccessToken: string;
   language?: string;
 }
