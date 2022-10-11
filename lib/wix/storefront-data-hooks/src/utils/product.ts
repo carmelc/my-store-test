@@ -6,7 +6,7 @@ export const getPrice = (price: any) => price?.formatted?.price ?? '0.00';
 
 export const toWixStoresLineItem = (product: any, productOptions: {[key: string]: any}): LineItem => {
   const options = productOptions ? Object.keys(productOptions).reduce((optionsAcc, optionKey) => {
-      optionsAcc[optionKey] = productOptions[optionKey].value;
+      optionsAcc[optionKey] = productOptions[optionKey].description;
       return optionsAcc;
     }, {} as Record<string, any>) : undefined;
 
@@ -14,7 +14,7 @@ export const toWixStoresLineItem = (product: any, productOptions: {[key: string]
     quantity: 1,
     catalogReference: {
       catalogItemId: product.id,
-      options,
+      options: {options},
       appId: WIX_STORES_APP_ID
     }
   };

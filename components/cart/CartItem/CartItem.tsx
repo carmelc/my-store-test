@@ -9,6 +9,7 @@ import {
   useRemoveItemFromCart,
 } from '@lib/wix/storefront-data-hooks'
 import type { LineItem } from "@wix/ecom/build/cjs/src/ecom-v1-cart-cart.universal";
+import { media } from '@wix/sdk';
 
 const CartItem = ({
   item,
@@ -80,7 +81,7 @@ const CartItem = ({
           width={130}
           unoptimized
           alt={item.productName?.original}
-          src={item.image!}
+          src={media.getScaleToFitImageURL(item.image!, 130, 130, {})}
         /> : null}
       </div>
       <div>
@@ -124,9 +125,9 @@ const CartItem = ({
               </IconButton>
             </div>
           </li>
-          {Object.keys(item.catalogReference?.options ?? {}).map((optionKey: any) => (
+          {Object.keys(item.catalogReference?.options?.options ?? {}).map((optionKey: any) => (
             <li key={optionKey}>
-              {optionKey}:{item.catalogReference?.options![optionKey]}
+              {optionKey}:{item.catalogReference?.options!.options![optionKey]}
             </li>
           ))}
         </Themed.ul>

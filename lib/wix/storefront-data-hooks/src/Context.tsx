@@ -8,6 +8,7 @@ interface ContextShape {
   domain: string
   storefrontAccessToken: string
   client: clientTypes | null
+  checkoutUrl: string
 }
 
 export const Context = React.createContext<ContextShape>({
@@ -16,4 +17,5 @@ export const Context = React.createContext<ContextShape>({
   domain: '',
   storefrontAccessToken: '',
   client: null,
+  checkoutUrl: '',
 })

@@ -7,7 +7,6 @@ import { Bag } from '@components/icons'
 import { useCart, useCheckoutUrl } from '@lib/wix/storefront-data-hooks'
 import CartItem from '../CartItem'
 import { BuilderComponent, builder } from '@builder.io/react'
-import env from '@config/env'
 
 const CartSidebarView: FC = () => {
   const checkoutUrl = useCheckoutUrl()
@@ -57,9 +56,9 @@ const CartSidebarView: FC = () => {
         </>
       ) : (
         <>
-          {items.map((item: any) => (
+          {items.map((item: any, index) => (
             <CartItem
-              key={item.id}
+              key={item.id + index}
               item={item}
             />
           ))}
