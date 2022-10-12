@@ -1,10 +1,12 @@
 {
-  "@originContentId": "afa62fa65493e77450c874948bb4465df52bf9fed10df247e95b7b2f64acdecc",
-  "@originModelId": "1f3a2ebf7145d9d1b1e197d77bd9a4f3cba4620d5236c727487b55a4f8824e6e",
-  "@originOrg": "4d21ef0c1391457a9faeb7a3ea164181",
-  "createdBy": "sx8yWkSeuOOt8KR7iLlKVfhAks23",
-  "createdDate": 1665504104437,
   "data": {
+    "state": {
+      "location": {
+        "path": "",
+        "query": {}
+      },
+      "deviceSize": "large"
+    },
     "blocks": [
       {
         "@type": "@builder.io/sdk:Element",
@@ -31,33 +33,31 @@
           }
         }
       }
-    ],
-    "state": {
-      "deviceSize": "large",
-      "location": {
-        "path": "",
-        "query": {}
-      }
-    }
+    ]
   },
+  "variations": {},
   "firstPublished": 1665565448019,
-  "id": "02f4cafed4464e2b8389e09ecdaf7ccf",
+  "@originContentId": "da856bf7915de0572853a1caa7b26b8dd2ef56099e79b40eaa36fa88ed577079",
+  "createdDate": 1665504104437,
   "lastUpdated": 1665567288233,
+  "createdBy": "sx8yWkSeuOOt8KR7iLlKVfhAks23",
   "lastUpdatedBy": "sx8yWkSeuOOt8KR7iLlKVfhAks23",
+  "published": "published",
+  "id": "5604e0e444f34d5d97e44c09773df094",
+  "@originModelId": "134f567bf00f46cf6118e3b1e123fc622f6d5cbd1b817edb8e371f1be9909741",
+  "@originOrg": "028f16fda7094723ac78b62d1a3cf945",
+  "testRatio": 1,
+  "query": [],
   "meta": {
+    "needsHydration": false,
     "componentsUsed": {
       "ProductView": 1
     },
     "hasLinks": false,
-    "kind": "component",
     "lastPreviewUrl": "http://localhost:3000/product/glasses?builder.space=4d21ef0c1391457a9faeb7a3ea164181&builder.cachebust=true&builder.preview=product-page&builder.noCache=true&__builder_editing__=true&builder.overrides.product-page=afa62fa65493e77450c874948bb4465df52bf9fed10df247e95b7b2f64acdecc&builder.overrides.afa62fa65493e77450c874948bb4465df52bf9fed10df247e95b7b2f64acdecc=afa62fa65493e77450c874948bb4465df52bf9fed10df247e95b7b2f64acdecc",
-    "needsHydration": false
+    "kind": "component"
   },
-  "modelId": "d0278b25e92942d1962e67a3a31d4f71",
   "name": "Product Page",
-  "published": "published",
-  "query": [],
-  "rev": "57g92wy5vtf",
-  "testRatio": 1,
-  "variations": {}
+  "modelId": "7e651e2a955f46038447a76b1fd6051e",
+  "rev": "keu19ayz0b"
 }

@@ -1,10 +1,20 @@
 {
-  "@originContentId": "4af09cece6afdacff2a77adba8910c5fa7bd028aba604e18a9ceb9aa02ce1751",
-  "@originModelId": "248700995b9895c5d9956805aba2dd0eb7c2806cb67d7f183dbf6e928e8eac3f",
-  "@originOrg": "4d21ef0c1391457a9faeb7a3ea164181",
   "createdBy": "sx8yWkSeuOOt8KR7iLlKVfhAks23",
-  "createdDate": 1665503844306,
+  "firstPublished": 1665564174813,
+  "name": "shop",
+  "variations": {},
+  "query": [
+    {
+      "operator": "is",
+      "@type": "@builder.io/core:Query",
+      "property": "urlPath",
+      "value": "/shop"
+    }
+  ],
+  "rev": "t8p8ntm0r7m",
   "data": {
+    "title": "shop",
+    "url": "/shop",
     "state": {
       "deviceSize": "large",
       "location": {
@@ -13,8 +23,6 @@
       }
     },
     "themeId": false,
-    "title": "shop",
-    "url": "/shop",
     "blocks": [
       {
         "@type": "@builder.io/sdk:Element",
@@ -126,31 +134,23 @@
       }
     ]
   },
-  "firstPublished": 1665564174813,
-  "id": "f98fc84f8eed45a59482a5b24e5c01a4",
-  "lastUpdated": 1665577761235,
-  "lastUpdatedBy": "sx8yWkSeuOOt8KR7iLlKVfhAks23",
+  "id": "082d4ec81e324193842322cb5a522636",
+  "modelId": "cb8b1cdd0047402e9919a41eae304505",
+  "published": "published",
   "meta": {
+    "hasLinks": false,
     "componentsUsed": {
       "CollectionBox": 2
     },
-    "hasLinks": false,
-    "kind": "page",
+    "needsHydration": false,
     "lastPreviewUrl": "http://localhost:3000/shop?builder.space=4d21ef0c1391457a9faeb7a3ea164181&builder.cachebust=true&builder.preview=page&builder.noCache=true&__builder_editing__=true&builder.overrides.page=4af09cece6afdacff2a77adba8910c5fa7bd028aba604e18a9ceb9aa02ce1751&builder.overrides.4af09cece6afdacff2a77adba8910c5fa7bd028aba604e18a9ceb9aa02ce1751=4af09cece6afdacff2a77adba8910c5fa7bd028aba604e18a9ceb9aa02ce1751&builder.overrides.page:/shop=4af09cece6afdacff2a77adba8910c5fa7bd028aba604e18a9ceb9aa02ce1751&builder.options.includeRefs=true",
-    "needsHydration": false
+    "kind": "page"
   },
-  "modelId": "93cef1a3ee7f4fb28b3efe61fea945ea",
-  "name": "shop",
-  "published": "published",
-  "query": [
-    {
-      "@type": "@builder.io/core:Query",
-      "operator": "is",
-      "property": "urlPath",
-      "value": "/shop"
-    }
-  ],
-  "rev": "vsm2ijic4hh",
+  "@originContentId": "004ac93aafb9cefac9eaa0ec81f7da86f597667b85651be3a70b36e39ed739c0",
+  "@originModelId": "caf0e3f6346d7d82d6541a2a1adef2008aeb7cc5e739ac3c003ed5e63b2e0696",
   "testRatio": 1,
-  "variations": {}
+  "lastUpdated": 1665577761235,
+  "@originOrg": "028f16fda7094723ac78b62d1a3cf945",
+  "createdDate": 1665503844306,
+  "lastUpdatedBy": "sx8yWkSeuOOt8KR7iLlKVfhAks23"
 }
