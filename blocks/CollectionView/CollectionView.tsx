@@ -6,45 +6,50 @@ import { Themed, jsx } from 'theme-ui'
 import { LoadingDots } from '@components/ui'
 import wixConfig from '@config/wix'
 import { ProductGrid, ProductGridProps } from '../ProductGrid/ProductGrid'
-import { getCollection } from '@lib/wix/storefront-data-hooks/src/api/operations'
+import {
+  getAllProducts,
+  getCollection,
+  getProduct,
+  getProductsForCollection
+} from '@lib/wix/storefront-data-hooks/src/api/operations'
+import { WixStoresCollection } from "@lib/wix-types";
 
 interface Props {
   className?: string
   children?: any
-  collection: string | any
+  collection: string | WixStoresCollection
   productGridOptions: ProductGridProps
   renderSeo?: boolean
 }
 
 const CollectionPreview: FC<Props> = ({
-  collection: initialCollection,
+  collection: selectedCollection,
   productGridOptions,
   renderSeo,
 }) => {
-  const [collection, setCollection] = useState(initialCollection)
+  const collection: WixStoresCollection  = typeof selectedCollection === 'string' ? {
+    id: selectedCollection,
+    name: 'Collection Name Preview'
+  } : selectedCollection;
+  const [products, setProducts] = useState<any[]>([])
   const [loading, setLoading] = useState(false)
-
-  useEffect(() => setCollection(initialCollection), [initialCollection])
-
   useEffect(() => {
-    const fetchCollection = async () => {
+    if (collection?.id) {
       setLoading(true)
-      const result = await getCollection(wixConfig, {
-        handle: collection,
+      getProductsForCollection(collection.id, wixConfig).then(products => {
+        setProducts(products)
+        setLoading(false)
       })
-      setCollection(result)
-      setLoading(false)
     }
-    if (typeof collection === 'string') {
-      fetchCollection()
-    }
-  }, [collection])
+  }, [collection.id])
 
-  if (!collection || typeof collection === 'string' || loading) {
+  if (loading || !collection?.id) {
     return <LoadingDots />
   }
+  if (!products?.length) {
+    return <Themed.h1>No products found for collection: {collection?.name}</Themed.h1>
+  }
 
-  const { title, description, products } = collection
 
   return (
     <Themed.div
@@ -53,21 +58,15 @@ const CollectionPreview: FC<Props> = ({
     >
       {renderSeo && (
         <NextSeo
-          title={collection.title}
-          description={collection.description}
+          title={collection.name}
+          description={collection.name}
           openGraph={{
             type: 'website',
-            title,
-            description,
+            title: collection.name,
+            description: collection.name,
           }}
         />
       )}
-      <div sx={{ display: 'flex', flexDirection: 'column' }}>
-        <span sx={{ mt: 0, mb: 2 }}>
-          <Themed.h1>{collection.title}</Themed.h1>
-        </span>
-        <div dangerouslySetInnerHTML={{ __html: collection.description! }} />
-      </div>
       <Themed.div sx={{ p: 5 }}>
         <ProductGrid {...productGridOptions} products={products} />
       </Themed.div>

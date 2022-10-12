@@ -19,7 +19,7 @@ export async function queryProducts(config: WixStoresConfig, limit: number = 500
 
 export async function queryCollections(config: WixStoresConfig, limit: number = 500) {
   const {wixClient, legacyFetch} = await buildClient(config)
-  return {items: (await legacyFetch({url: 'stores/v1/collections/query', method: 'POST'}))};
+  return {items: (await legacyFetch({url: 'stores/v1/collections/query', method: 'POST'})).collections};
   // return wixClient.data.query({
   //   collectionName: 'Stores/Collections',
   //   query: {
@@ -32,6 +32,11 @@ export async function queryCollections(config: WixStoresConfig, limit: number = 
 
 export async function getAllProducts(config: WixStoresConfig, limit?: number) {
   return (await queryProducts(config, limit)).items!;
+}
+
+export async function getProductsForCollection(collectionId: string, config: WixStoresConfig, limit?: number) {
+  const products = (await queryProducts(config, limit)).items!;
+  return products?.filter(({collectionIds}: {collectionIds: string[]}) => collectionIds.indexOf(collectionId) > -1)
 }
 
 export async function getAllProductPaths(
@@ -81,13 +86,18 @@ export async function getCollection(
   options: { id?: string; handle?: string }
 ) {
   const collections: any[] = await getAllCollections(config);
-  if (options.handle) {
-    return fastClone(collections.find(({ slug }) => slug === options.handle))
-  } else if (options.id) {
-    return fastClone(collections.find(({ id }) => id=== options.id))
+  let result = {};
+  if (options.handle || options.id) {
+    const collectionIdentifier = options.handle || options.id;
+    result = collections.find(({ id }) => id === collectionIdentifier)
   } else {
-    throw new Error('A product ID or handle is required')
+    throw new Error('A collection ID is required')
   }
+  if (!result) {
+    console.error('Collection was not found for options', options)
+    return null
+  }
+  return fastClone(result)
 }
 
 export async function searchProducts(
