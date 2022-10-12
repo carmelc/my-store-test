@@ -4,7 +4,6 @@ import { Input } from '@builder.io/sdk'
 const LazyProductGrid = dynamic(async () => {
   return (await import('./ProductGrid')).ProductGrid
 })
-const isDemo = Boolean(process.env.IS_DEMO)
 
 const productCardFields: Input[] = [
   {
@@ -81,16 +80,4 @@ Builder.registerComponent(LazyProductGrid, {
       ],
     },
   ].concat(productGridSchema as any),
-})
-
-Builder.registerComponent(LazyProductGrid, {
-  name: 'ProductCollectionGrid',
-  image: 'https://unpkg.com/css.gg@2.0.0/icons/svg/display-grid.svg',
-  description: 'Choose a collection to show its products in a grid',
-  inputs: [
-    {
-      name: 'collection',
-      type: `WixStoresCollectionHandle`,
-    },
-  ].concat(productGridSchema),
 })

@@ -30,7 +30,7 @@ restrictedRegister(
 restrictedRegister(
   LazyProductView,
   {
-    name: 'ProductWidget',
+    name: 'ProductBox',
     inputs: [
       {
         name: 'product',
@@ -49,7 +49,7 @@ restrictedRegister(
       },
     ],
     image: 'https://unpkg.com/css.gg@2.0.0/icons/svg/ereader.svg',
-    description: 'Choose a product to show its details on page',
+    description: 'Choose a product to show in the box',
   },
   ['page', 'collection-page', 'theme']
 )

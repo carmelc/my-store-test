@@ -1,0 +1,23 @@
+{
+  "createdBy": "sx8yWkSeuOOt8KR7iLlKVfhAks23",
+  "createdDate": 1665504104437,
+  "data": {},
+  "id": "bd05a573f43b403fafc8756bb39756af",
+  "lastUpdatedBy": "sx8yWkSeuOOt8KR7iLlKVfhAks23",
+  "meta": {
+    "kind": "component",
+    "lastPreviewUrl": "http://localhost:3000/product/glasses?builder.space=d9b0ed1caa1b4bd7821b86c9c25d48af&builder.cachebust=true&builder.preview=product-page&builder.noCache=true&__builder_editing__=true&builder.overrides.product-page=c9e26064ed984f64a488d7ca349e17a3&builder.overrides.c9e26064ed984f64a488d7ca349e17a3=c9e26064ed984f64a488d7ca349e17a3"
+  },
+  "modelId": "aa5eef1115284750aa09275b331d69d2",
+  "name": "Product Page",
+  "published": "published",
+  "query": [],
+  "testRatio": 1,
+  "variations": {},
+  "lastUpdated": 1665565448022,
+  "firstPublished": 1665565448019,
+  "rev": "zlyoknfl5eo",
+  "@originOrg": "d9b0ed1caa1b4bd7821b86c9c25d48af",
+  "@originContentId": "c9e26064ed984f64a488d7ca349e17a3",
+  "@originModelId": "479c85b63f514004b2e838d8e03b8b15"
+}

@@ -11,15 +11,15 @@ builder.init(builderConfig.apiKey)
 import '../blocks/ProductGrid/ProductGrid.builder'
 import '../blocks/CollectionView/CollectionView.builder'
 import '../blocks/ProductView/ProductView.builder'
-import '../blocks/CloudinaryImage/CloudinaryImage.builder'
+
 
 Builder.register('insertMenu', {
   name: 'Wix Stores Components',
   items: [
-    { name: 'ProductWidget' },
-    { name: 'CollectionBox', label: 'Collection stuff' },
+    { name: 'ProductBox' },
     { name: 'ProductGrid' },
-    { name: 'ProductCollectionGrid' },
+    { name: 'CollectionBox' },
+    { name: 'ProductView' },
     { name: 'CollectionView' },
   ],
 })

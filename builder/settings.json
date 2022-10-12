@@ -1,42 +1,65 @@
 {
-  "parentOrganization": "31690b9fbad346358ed64d2cc349bd49",
-  "hasIntegrated": "local",
-  "loadPlugins": ["@builder.io/plugin-wix-stores", "@builder.io/plugin-cloudinary"],
   "settings": {
-    "optimizeContentVisibility": true,
     "plugins": {
       "@builder.io/plugin-wix-stores": {
-        "syncPreviewUrlWithTargeting": true,
-        "storeDomain": "builder-io-demo.myshopify.com/",
-        "publicKey": "14f064d7f94eeaadf93bd8690fca1207"
+        "storeDomain": "https://ronnyr34.wixsite.com/my-site-165",
+        "hasConnected": true,
+        "publicKey": "todo-future-capability"
       }
     },
-    "componentsOnlyMode": false,
-    "showSitePreviewTab": false,
-    "editorShowShopifyBlocks": false,
-    "allowBuiltInComponents": true,
-    "reloadPreviewForMobile": false
-  },
-  "@version": 5,
-  "customTargetingAttributes": {
-    "collectionHandle": {
-      "type": "WixStoresCollectionHandle"
+    "apps": {
+      "Stamped_io": {},
+      "Rebuy": {},
+      "Yotpo": {},
+      "Postscript": {},
+      "Klaviyo": {}
     },
-    "itemInCart": {
-      "type": "WixStoresProductHandle"
-    },
-    "productHandle": {
-      "type": "WixStoresProductHandle"
-    }
+    "customComponents": [
+      "ProductView",
+      "CloudinaryImage",
+      "ProgressTracker",
+      "JobSelect",
+      "CompanySizeSelect",
+      "UseCaseSelect",
+      "TechStackSelect",
+      "AttributionSelect",
+      "WhyBuilderSelect",
+      "Divider",
+      "Button",
+      "Tooltip",
+      "Material Table",
+      "Material Tabs",
+      "Code Block",
+      "Counter",
+      "CodeCopy",
+      "Material Tooltip",
+      "Signup",
+      "IntegrationPrioritySupportTip",
+      "SqlTable",
+      "IntegrateButton",
+      "Animated Logo",
+      "ProductWidget",
+      "ProductCollectionGrid",
+      "CollectionBox"
+    ]
   },
-  "siteUrl": "http://localhost:3000",
   "type": "space",
+  "siteUrl": "http://localhost:3000",
+  "name": "Wix Stores Template",
+  "loadPlugins": [
+    "http://localhost:1268/plugin.system.js",
+    "@builder.io/plugin-wix-stores"
+  ],
+  "id": "d9b0ed1caa1b4bd7821b86c9c25d48af",
+  "@version": 6,
   "cloneInfo": {
     "contentIdMap": {
-
+      "75fc792a7a5d4889933e32aa91fc7283": "f8a0a55c480042759055f7077d4a60b8",
+      "c9e26064ed984f64a488d7ca349e17a3": "bd05a573f43b403fafc8756bb39756af"
     },
     "modelIdMap": {
-
+      "63e7d1a5fed84e1891980a533a7d5f6c": "95562dba2f8b4f5997206c27a7c2b511",
+      "479c85b63f514004b2e838d8e03b8b15": "aa5eef1115284750aa09275b331d69d2"
     }
   }
 }

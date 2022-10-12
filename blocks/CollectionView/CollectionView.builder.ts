@@ -52,7 +52,7 @@ restrictedRegister(
   {
     name: 'CollectionView',
     description:
-      'Dynamic collection detaills, autobinds to the collection in context, use only on collection pages',
+      'Dynamic collection details, autobinds to the collection in context, use only on collection pages',
     inputs: collectionBoxSchema,
     defaults: {
       bindings: {

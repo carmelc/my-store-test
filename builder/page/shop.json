@@ -1,0 +1,106 @@
+{
+  "createdBy": "sx8yWkSeuOOt8KR7iLlKVfhAks23",
+  "createdDate": 1665503844306,
+  "data": {
+    "themeId": false,
+    "title": "shop",
+    "blocks": [
+      {
+        "@type": "@builder.io/sdk:Element",
+        "@version": 2,
+        "id": "builder-d798ce69939c4d4eae38759e4d064762",
+        "component": {
+          "name": "Text",
+          "options": {
+            "text": "<h1>Best Sellers</h1>"
+          }
+        },
+        "responsiveStyles": {
+          "large": {
+            "display": "flex",
+            "flexDirection": "column",
+            "position": "relative",
+            "flexShrink": "0",
+            "boxSizing": "border-box",
+            "marginTop": "20px",
+            "lineHeight": "normal",
+            "height": "auto"
+          }
+        }
+      },
+      {
+        "@type": "@builder.io/sdk:Element",
+        "@version": 2,
+        "id": "builder-a4ed0b44d8e949f1839c1791995a7e1e",
+        "component": {
+          "name": "ProductGrid",
+          "options": {
+            "cardProps": {
+              "imgPriority": true,
+              "imgLayout": "responsive",
+              "imgLoading": "eager",
+              "imgWidth": 540,
+              "imgHeight": 540,
+              "layout": "fixed"
+            },
+            "offset": 0,
+            "limit": 9,
+            "productsList": [
+              {
+                "product": "shoes"
+              }
+            ]
+          }
+        },
+        "responsiveStyles": {
+          "large": {
+            "display": "flex",
+            "flexDirection": "column",
+            "position": "relative",
+            "flexShrink": "0",
+            "boxSizing": "border-box",
+            "marginTop": "20px"
+          }
+        }
+      }
+    ],
+    "url": "/shop",
+    "state": {
+      "deviceSize": "large",
+      "location": {
+        "path": "",
+        "query": {}
+      }
+    }
+  },
+  "id": "f8a0a55c480042759055f7077d4a60b8",
+  "lastUpdatedBy": "sx8yWkSeuOOt8KR7iLlKVfhAks23",
+  "meta": {
+    "componentsUsed": {
+      "ProductGrid": 1
+    },
+    "hasLinks": false,
+    "kind": "page",
+    "lastPreviewUrl": "http://localhost:3000/shop?builder.space=d9b0ed1caa1b4bd7821b86c9c25d48af&builder.cachebust=true&builder.preview=page&builder.noCache=true&__builder_editing__=true&builder.overrides.page=75fc792a7a5d4889933e32aa91fc7283&builder.overrides.75fc792a7a5d4889933e32aa91fc7283=75fc792a7a5d4889933e32aa91fc7283&builder.overrides.page:/shop=75fc792a7a5d4889933e32aa91fc7283&builder.options.includeRefs=true",
+    "needsHydration": false
+  },
+  "modelId": "95562dba2f8b4f5997206c27a7c2b511",
+  "name": "shop",
+  "published": "published",
+  "query": [
+    {
+      "@type": "@builder.io/core:Query",
+      "operator": "is",
+      "property": "urlPath",
+      "value": "/shop"
+    }
+  ],
+  "testRatio": 1,
+  "variations": {},
+  "lastUpdated": 1665564174815,
+  "firstPublished": 1665564174813,
+  "rev": "jo1joavh1m",
+  "@originOrg": "d9b0ed1caa1b4bd7821b86c9c25d48af",
+  "@originContentId": "75fc792a7a5d4889933e32aa91fc7283",
+  "@originModelId": "63e7d1a5fed84e1891980a533a7d5f6c"
+}
