@@ -1,9 +1,20 @@
 {
+  "@originContentId": "4af09cece6afdacff2a77adba8910c5fa7bd028aba604e18a9ceb9aa02ce1751",
+  "@originModelId": "248700995b9895c5d9956805aba2dd0eb7c2806cb67d7f183dbf6e928e8eac3f",
+  "@originOrg": "4d21ef0c1391457a9faeb7a3ea164181",
   "createdBy": "sx8yWkSeuOOt8KR7iLlKVfhAks23",
   "createdDate": 1665503844306,
   "data": {
+    "state": {
+      "deviceSize": "large",
+      "location": {
+        "path": "",
+        "query": {}
+      }
+    },
     "themeId": false,
     "title": "shop",
+    "url": "/shop",
     "blocks": [
       {
         "@type": "@builder.io/sdk:Element",
@@ -48,6 +59,9 @@
             "productsList": [
               {
                 "product": "shoes"
+              },
+              {
+                "product": "i-m-a-product-8"
               }
             ]
           }
@@ -62,29 +76,45 @@
             "marginTop": "20px"
           }
         }
+      },
+      {
+        "@type": "@builder.io/sdk:Element",
+        "@version": 2,
+        "id": "builder-3bc86703e5d3417d9584d55655c5a6a7",
+        "component": {
+          "name": "ProductBox",
+          "options": {
+            "product": "glasses"
+          }
+        },
+        "responsiveStyles": {
+          "large": {
+            "display": "flex",
+            "flexDirection": "column",
+            "position": "relative",
+            "flexShrink": "0",
+            "boxSizing": "border-box",
+            "marginTop": "20px"
+          }
+        }
       }
-    ],
-    "url": "/shop",
-    "state": {
-      "deviceSize": "large",
-      "location": {
-        "path": "",
-        "query": {}
-      }
-    }
+    ]
   },
-  "id": "f8a0a55c480042759055f7077d4a60b8",
+  "firstPublished": 1665564174813,
+  "id": "351c3c5f6f1343469d5d32e89f1d17d6",
+  "lastUpdated": 1665566515849,
   "lastUpdatedBy": "sx8yWkSeuOOt8KR7iLlKVfhAks23",
   "meta": {
     "componentsUsed": {
+      "ProductBox": 1,
       "ProductGrid": 1
     },
     "hasLinks": false,
     "kind": "page",
-    "lastPreviewUrl": "http://localhost:3000/shop?builder.space=d9b0ed1caa1b4bd7821b86c9c25d48af&builder.cachebust=true&builder.preview=page&builder.noCache=true&__builder_editing__=true&builder.overrides.page=75fc792a7a5d4889933e32aa91fc7283&builder.overrides.75fc792a7a5d4889933e32aa91fc7283=75fc792a7a5d4889933e32aa91fc7283&builder.overrides.page:/shop=75fc792a7a5d4889933e32aa91fc7283&builder.options.includeRefs=true",
+    "lastPreviewUrl": "http://localhost:3000/shop?builder.space=4d21ef0c1391457a9faeb7a3ea164181&builder.cachebust=true&builder.preview=page&builder.noCache=true&__builder_editing__=true&builder.overrides.page=4af09cece6afdacff2a77adba8910c5fa7bd028aba604e18a9ceb9aa02ce1751&builder.overrides.4af09cece6afdacff2a77adba8910c5fa7bd028aba604e18a9ceb9aa02ce1751=4af09cece6afdacff2a77adba8910c5fa7bd028aba604e18a9ceb9aa02ce1751&builder.overrides.page:/shop=4af09cece6afdacff2a77adba8910c5fa7bd028aba604e18a9ceb9aa02ce1751&builder.options.includeRefs=true",
     "needsHydration": false
   },
-  "modelId": "95562dba2f8b4f5997206c27a7c2b511",
+  "modelId": "76d3618eeb854ec096d1ed5d854f0ea2",
   "name": "shop",
   "published": "published",
   "query": [
@@ -95,12 +125,7 @@
       "value": "/shop"
     }
   ],
+  "rev": "ty8wuz6j0o",
   "testRatio": 1,
-  "variations": {},
-  "lastUpdated": 1665564174815,
-  "firstPublished": 1665564174813,
-  "rev": "jo1joavh1m",
-  "@originOrg": "d9b0ed1caa1b4bd7821b86c9c25d48af",
-  "@originContentId": "75fc792a7a5d4889933e32aa91fc7283",
-  "@originModelId": "63e7d1a5fed84e1891980a533a7d5f6c"
+  "variations": {}
 }

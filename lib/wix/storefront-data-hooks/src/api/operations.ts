@@ -58,7 +58,7 @@ export async function getProduct(
   }
   if (!result) {
     console.error('Product was not found for options', options)
-    throw new Error('Product was not found for options')
+    return null
   }
   return fastClone(result)
 }

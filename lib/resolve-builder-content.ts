@@ -19,7 +19,6 @@ export async function resolveBuilderContent(
       cachebust: true,
     } as any)
     .toPromise()
-  console.log('*** resolveBuilderContent', page)
 
   if (page) {
     return await getAsyncProps(page, {

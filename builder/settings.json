@@ -2,16 +2,16 @@
   "settings": {
     "plugins": {
       "@builder.io/plugin-wix-stores": {
-        "storeDomain": "https://ronnyr34.wixsite.com/my-site-165",
         "hasConnected": true,
+        "storeDomain": "https://ronnyr34.wixsite.com/my-site-165",
         "publicKey": "todo-future-capability"
       }
     },
     "apps": {
-      "Stamped_io": {},
-      "Rebuy": {},
       "Yotpo": {},
       "Postscript": {},
+      "Rebuy": {},
+      "Stamped_io": {},
       "Klaviyo": {}
     },
     "customComponents": [
@@ -45,21 +45,21 @@
   },
   "type": "space",
   "siteUrl": "http://localhost:3000",
-  "name": "Wix Stores Template",
+  "name": "Stores With JSONS",
   "loadPlugins": [
     "http://localhost:1268/plugin.system.js",
     "@builder.io/plugin-wix-stores"
   ],
-  "id": "d9b0ed1caa1b4bd7821b86c9c25d48af",
+  "id": "4d21ef0c1391457a9faeb7a3ea164181",
   "@version": 6,
   "cloneInfo": {
     "contentIdMap": {
-      "75fc792a7a5d4889933e32aa91fc7283": "f8a0a55c480042759055f7077d4a60b8",
-      "c9e26064ed984f64a488d7ca349e17a3": "bd05a573f43b403fafc8756bb39756af"
+      "afa62fa65493e77450c874948bb4465df52bf9fed10df247e95b7b2f64acdecc": "a23be5096ae94f1aa0a6034f6835dced",
+      "4af09cece6afdacff2a77adba8910c5fa7bd028aba604e18a9ceb9aa02ce1751": "351c3c5f6f1343469d5d32e89f1d17d6"
     },
     "modelIdMap": {
-      "63e7d1a5fed84e1891980a533a7d5f6c": "95562dba2f8b4f5997206c27a7c2b511",
-      "479c85b63f514004b2e838d8e03b8b15": "aa5eef1115284750aa09275b331d69d2"
+      "1f3a2ebf7145d9d1b1e197d77bd9a4f3cba4620d5236c727487b55a4f8824e6e": "98ea810151d54efb9695503690c7afce",
+      "248700995b9895c5d9956805aba2dd0eb7c2806cb67d7f183dbf6e928e8eac3f": "76d3618eeb854ec096d1ed5d854f0ea2"
     }
   }
 }
