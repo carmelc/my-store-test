@@ -23,7 +23,7 @@
         "component": {
           "name": "Text",
           "options": {
-            "text": "<h1>Best Sellers</h1>"
+            "text": "<h2 style=\"font-size: 36px;font-weight: bold;\">On Sale!!!</h2>\n"
           }
         },
         "responsiveStyles": {
@@ -42,28 +42,21 @@
       {
         "@type": "@builder.io/sdk:Element",
         "@version": 2,
-        "id": "builder-a4ed0b44d8e949f1839c1791995a7e1e",
+        "id": "builder-811a7980ef104ddfa3f9f903a2e858e9",
         "component": {
-          "name": "ProductGrid",
+          "name": "CollectionBox",
           "options": {
-            "cardProps": {
-              "imgPriority": true,
-              "imgLayout": "responsive",
-              "imgLoading": "eager",
-              "imgWidth": 540,
-              "imgHeight": 540,
-              "layout": "fixed"
-            },
-            "offset": 0,
-            "limit": 9,
-            "productsList": [
-              {
-                "product": "shoes"
-              },
-              {
-                "product": "i-m-a-product-8"
+            "productGridOptions": {
+              "cardProps": {
+                "imgPriority": true,
+                "imgLayout": "responsive",
+                "imgLoading": "eager",
+                "imgWidth": 540,
+                "imgHeight": 540,
+                "layout": "fixed"
               }
-            ]
+            },
+            "collection": "54e98531-f749-0bb9-bd85-34cc10cc9974"
           }
         },
         "responsiveStyles": {
@@ -80,11 +73,44 @@
       {
         "@type": "@builder.io/sdk:Element",
         "@version": 2,
-        "id": "builder-3bc86703e5d3417d9584d55655c5a6a7",
+        "id": "builder-b5e93317299f4f3a93d3152af6ab3d9f",
         "component": {
-          "name": "ProductBox",
+          "name": "Text",
           "options": {
-            "product": "glasses"
+            "text": "<h2 style=\"font-size: 36px;font-weight: bold;\">All Products</h2>\n"
+          }
+        },
+        "responsiveStyles": {
+          "large": {
+            "display": "flex",
+            "flexDirection": "column",
+            "position": "relative",
+            "flexShrink": "0",
+            "boxSizing": "border-box",
+            "marginTop": "20px",
+            "lineHeight": "normal",
+            "height": "auto"
+          }
+        }
+      },
+      {
+        "@type": "@builder.io/sdk:Element",
+        "@version": 2,
+        "id": "builder-b357049de079403797ec12b24d57de45",
+        "component": {
+          "name": "CollectionBox",
+          "options": {
+            "productGridOptions": {
+              "cardProps": {
+                "imgPriority": true,
+                "imgLayout": "responsive",
+                "imgLoading": "eager",
+                "imgWidth": 150,
+                "imgHeight": 150,
+                "layout": "fixed"
+              }
+            },
+            "collection": "00000000-000000-000000-000000000001"
           }
         },
         "responsiveStyles": {
@@ -101,20 +127,19 @@
     ]
   },
   "firstPublished": 1665564174813,
-  "id": "351c3c5f6f1343469d5d32e89f1d17d6",
-  "lastUpdated": 1665566515849,
+  "id": "f98fc84f8eed45a59482a5b24e5c01a4",
+  "lastUpdated": 1665577761235,
   "lastUpdatedBy": "sx8yWkSeuOOt8KR7iLlKVfhAks23",
   "meta": {
     "componentsUsed": {
-      "ProductBox": 1,
-      "ProductGrid": 1
+      "CollectionBox": 2
     },
     "hasLinks": false,
     "kind": "page",
     "lastPreviewUrl": "http://localhost:3000/shop?builder.space=4d21ef0c1391457a9faeb7a3ea164181&builder.cachebust=true&builder.preview=page&builder.noCache=true&__builder_editing__=true&builder.overrides.page=4af09cece6afdacff2a77adba8910c5fa7bd028aba604e18a9ceb9aa02ce1751&builder.overrides.4af09cece6afdacff2a77adba8910c5fa7bd028aba604e18a9ceb9aa02ce1751=4af09cece6afdacff2a77adba8910c5fa7bd028aba604e18a9ceb9aa02ce1751&builder.overrides.page:/shop=4af09cece6afdacff2a77adba8910c5fa7bd028aba604e18a9ceb9aa02ce1751&builder.options.includeRefs=true",
     "needsHydration": false
   },
-  "modelId": "76d3618eeb854ec096d1ed5d854f0ea2",
+  "modelId": "93cef1a3ee7f4fb28b3efe61fea945ea",
   "name": "shop",
   "published": "published",
   "query": [
@@ -125,7 +150,7 @@
       "value": "/shop"
     }
   ],
-  "rev": "ty8wuz6j0o",
+  "rev": "vsm2ijic4hh",
   "testRatio": 1,
   "variations": {}
 }

@@ -1,0 +1,211 @@
+{
+  "createdBy": "sx8yWkSeuOOt8KR7iLlKVfhAks23",
+  "createdDate": 1665577780727,
+  "data": {
+    "themeId": false,
+    "title": "product-cards",
+    "blocks": [
+      {
+        "@type": "@builder.io/sdk:Element",
+        "@version": 2,
+        "id": "builder-5ac7bcb6430c4ebca4afd3209d46fc0b",
+        "component": {
+          "name": "Text",
+          "options": {
+            "text": "<p>Simple product card</p>"
+          }
+        },
+        "responsiveStyles": {
+          "large": {
+            "display": "flex",
+            "flexDirection": "column",
+            "position": "relative",
+            "flexShrink": "0",
+            "boxSizing": "border-box",
+            "marginTop": "20px",
+            "lineHeight": "normal",
+            "height": "auto"
+          }
+        }
+      },
+      {
+        "@type": "@builder.io/sdk:Element",
+        "@version": 2,
+        "id": "builder-e389df102cf0475c8f9f0574fa6423a8",
+        "component": {
+          "name": "ProductBox",
+          "options": {
+            "product": "i-m-a-product-8"
+          }
+        },
+        "responsiveStyles": {
+          "large": {
+            "display": "flex",
+            "flexDirection": "column",
+            "position": "relative",
+            "flexShrink": "0",
+            "boxSizing": "border-box",
+            "marginTop": "20px",
+            "paddingLeft": "200px",
+            "marginRight": "-1px",
+            "paddingRight": "200px"
+          }
+        }
+      },
+      {
+        "@type": "@builder.io/sdk:Element",
+        "@version": 2,
+        "id": "builder-b9475093fbed473aa6f6ae6cb10955cb",
+        "component": {
+          "name": "Text",
+          "options": {
+            "text": "<p>Product with modified texts</p>"
+          }
+        },
+        "responsiveStyles": {
+          "large": {
+            "display": "flex",
+            "flexDirection": "column",
+            "position": "relative",
+            "flexShrink": "0",
+            "boxSizing": "border-box",
+            "marginTop": "20px",
+            "lineHeight": "normal",
+            "height": "auto"
+          }
+        }
+      },
+      {
+        "@type": "@builder.io/sdk:Element",
+        "@version": 2,
+        "id": "builder-177a4b0b577649808612840785c9d9c8",
+        "component": {
+          "name": "ProductBox",
+          "options": {
+            "product": "watch",
+            "description": "<p>The description of this product is manually defined in builder.io</p>",
+            "title": "Altered Title Watch"
+          }
+        },
+        "responsiveStyles": {
+          "large": {
+            "display": "flex",
+            "flexDirection": "column",
+            "position": "relative",
+            "flexShrink": "0",
+            "boxSizing": "border-box",
+            "marginTop": "20px",
+            "marginLeft": "200px",
+            "paddingRight": "200px"
+          }
+        }
+      },
+      {
+        "@type": "@builder.io/sdk:Element",
+        "@version": 2,
+        "id": "builder-2dbf7eab8e5d4cdf80ed538eef5e3627",
+        "component": {
+          "name": "Text",
+          "options": {
+            "text": "<p>Products Grid (picked one by one)</p>"
+          }
+        },
+        "responsiveStyles": {
+          "large": {
+            "display": "flex",
+            "flexDirection": "column",
+            "position": "relative",
+            "flexShrink": "0",
+            "boxSizing": "border-box",
+            "marginTop": "20px",
+            "lineHeight": "normal",
+            "height": "auto"
+          }
+        }
+      },
+      {
+        "@type": "@builder.io/sdk:Element",
+        "@version": 2,
+        "id": "builder-fe8ea09ba4f24e2986ed69f38c750188",
+        "component": {
+          "name": "ProductGrid",
+          "options": {
+            "cardProps": {
+              "imgPriority": true,
+              "imgLayout": "responsive",
+              "imgLoading": "eager",
+              "imgWidth": 540,
+              "imgHeight": 540,
+              "layout": "fixed"
+            },
+            "offset": 0,
+            "limit": 9,
+            "productsList": [
+              {
+                "product": "i-m-a-product-4"
+              },
+              {
+                "product": "i-m-a-product-10"
+              },
+              {
+                "product": "i-m-a-product-10"
+              },
+              {
+                "product": "i-m-a-product-9"
+              }
+            ]
+          }
+        },
+        "responsiveStyles": {
+          "large": {
+            "display": "flex",
+            "flexDirection": "column",
+            "position": "relative",
+            "flexShrink": "0",
+            "boxSizing": "border-box",
+            "marginTop": "20px"
+          }
+        }
+      }
+    ],
+    "url": "/product-cards",
+    "state": {
+      "deviceSize": "large",
+      "location": {
+        "path": "",
+        "query": {}
+      }
+    }
+  },
+  "id": "742f395b08d847399473188952b9c289",
+  "lastUpdatedBy": "sx8yWkSeuOOt8KR7iLlKVfhAks23",
+  "meta": {
+    "componentsUsed": {
+      "ProductBox": 2,
+      "ProductGrid": 1
+    },
+    "hasLinks": false,
+    "kind": "page",
+    "lastPreviewUrl": "http://localhost:3000/product-cards?builder.space=4d21ef0c1391457a9faeb7a3ea164181&builder.cachebust=true&builder.preview=page&builder.noCache=true&__builder_editing__=true&builder.overrides.page=3b1c4261b668439c9df5d2f3c0f33363&builder.overrides.3b1c4261b668439c9df5d2f3c0f33363=3b1c4261b668439c9df5d2f3c0f33363&builder.overrides.page:/product-cards=3b1c4261b668439c9df5d2f3c0f33363&builder.options.includeRefs=true",
+    "needsHydration": false
+  },
+  "modelId": "93cef1a3ee7f4fb28b3efe61fea945ea",
+  "name": "product-cards",
+  "published": "published",
+  "query": [
+    {
+      "@type": "@builder.io/core:Query",
+      "operator": "is",
+      "property": "urlPath",
+      "value": "/product-cards"
+    }
+  ],
+  "testRatio": 1,
+  "variations": {},
+  "lastUpdated": 1665578015215,
+  "firstPublished": 1665577923326,
+  "rev": "vsm2ijic4hh",
+  "@originOrg": "4d21ef0c1391457a9faeb7a3ea164181",
+  "@originContentId": "3b1c4261b668439c9df5d2f3c0f33363",
+  "@originModelId": "248700995b9895c5d9956805aba2dd0eb7c2806cb67d7f183dbf6e928e8eac3f"
+}

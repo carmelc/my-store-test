@@ -1,19 +1,5 @@
 {
   "settings": {
-    "plugins": {
-      "@builder.io/plugin-wix-stores": {
-        "hasConnected": true,
-        "storeDomain": "https://ronnyr34.wixsite.com/my-site-165",
-        "publicKey": "todo-future-capability"
-      }
-    },
-    "apps": {
-      "Yotpo": {},
-      "Postscript": {},
-      "Rebuy": {},
-      "Stamped_io": {},
-      "Klaviyo": {}
-    },
     "customComponents": [
       "ProductView",
       "CloudinaryImage",
@@ -41,7 +27,21 @@
       "ProductWidget",
       "ProductCollectionGrid",
       "CollectionBox"
-    ]
+    ],
+    "plugins": {
+      "@builder.io/plugin-wix-stores": {
+        "storeDomain": "https://ronnyr34.wixsite.com/my-site-165",
+        "publicKey": "todo-future-capability",
+        "hasConnected": true
+      }
+    },
+    "apps": {
+      "Stamped_io": {},
+      "Postscript": {},
+      "Klaviyo": {},
+      "Rebuy": {},
+      "Yotpo": {}
+    }
   },
   "type": "space",
   "siteUrl": "http://localhost:3000",
@@ -54,12 +54,13 @@
   "@version": 6,
   "cloneInfo": {
     "contentIdMap": {
-      "afa62fa65493e77450c874948bb4465df52bf9fed10df247e95b7b2f64acdecc": "a23be5096ae94f1aa0a6034f6835dced",
-      "4af09cece6afdacff2a77adba8910c5fa7bd028aba604e18a9ceb9aa02ce1751": "351c3c5f6f1343469d5d32e89f1d17d6"
+      "3b1c4261b668439c9df5d2f3c0f33363": "742f395b08d847399473188952b9c289",
+      "4af09cece6afdacff2a77adba8910c5fa7bd028aba604e18a9ceb9aa02ce1751": "f98fc84f8eed45a59482a5b24e5c01a4",
+      "afa62fa65493e77450c874948bb4465df52bf9fed10df247e95b7b2f64acdecc": "02f4cafed4464e2b8389e09ecdaf7ccf"
     },
     "modelIdMap": {
-      "1f3a2ebf7145d9d1b1e197d77bd9a4f3cba4620d5236c727487b55a4f8824e6e": "98ea810151d54efb9695503690c7afce",
-      "248700995b9895c5d9956805aba2dd0eb7c2806cb67d7f183dbf6e928e8eac3f": "76d3618eeb854ec096d1ed5d854f0ea2"
+      "248700995b9895c5d9956805aba2dd0eb7c2806cb67d7f183dbf6e928e8eac3f": "93cef1a3ee7f4fb28b3efe61fea945ea",
+      "1f3a2ebf7145d9d1b1e197d77bd9a4f3cba4620d5236c727487b55a4f8824e6e": "d0278b25e92942d1962e67a3a31d4f71"
     }
   }
 }

@@ -41,7 +41,7 @@
     }
   },
   "firstPublished": 1665565448019,
-  "id": "a23be5096ae94f1aa0a6034f6835dced",
+  "id": "02f4cafed4464e2b8389e09ecdaf7ccf",
   "lastUpdated": 1665567288233,
   "lastUpdatedBy": "sx8yWkSeuOOt8KR7iLlKVfhAks23",
   "meta": {
@@ -53,11 +53,11 @@
     "lastPreviewUrl": "http://localhost:3000/product/glasses?builder.space=4d21ef0c1391457a9faeb7a3ea164181&builder.cachebust=true&builder.preview=product-page&builder.noCache=true&__builder_editing__=true&builder.overrides.product-page=afa62fa65493e77450c874948bb4465df52bf9fed10df247e95b7b2f64acdecc&builder.overrides.afa62fa65493e77450c874948bb4465df52bf9fed10df247e95b7b2f64acdecc=afa62fa65493e77450c874948bb4465df52bf9fed10df247e95b7b2f64acdecc",
     "needsHydration": false
   },
-  "modelId": "98ea810151d54efb9695503690c7afce",
+  "modelId": "d0278b25e92942d1962e67a3a31d4f71",
   "name": "Product Page",
   "published": "published",
   "query": [],
-  "rev": "uwtsx1r9dw",
+  "rev": "57g92wy5vtf",
   "testRatio": 1,
   "variations": {}
 }
