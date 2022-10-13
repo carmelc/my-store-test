@@ -1,19 +1,5 @@
 {
   "settings": {
-    "apps": {
-      "Yotpo": {},
-      "Stamped_io": {},
-      "Postscript": {},
-      "Klaviyo": {},
-      "Rebuy": {}
-    },
-    "plugins": {
-      "@builder.io/plugin-wix-stores": {
-        "publicKey": "todo-future-capability",
-        "storeDomain": "https://ronnyr34.wixsite.com/my-site-165",
-        "hasConnected": true
-      }
-    },
     "customComponents": [
       "ProductView",
       "CloudinaryImage",
@@ -41,7 +27,21 @@
       "ProductWidget",
       "ProductCollectionGrid",
       "CollectionBox"
-    ]
+    ],
+    "apps": {
+      "Yotpo": {},
+      "Rebuy": {},
+      "Stamped_io": {},
+      "Postscript": {},
+      "Klaviyo": {}
+    },
+    "plugins": {
+      "@builder.io/plugin-wix-stores": {
+        "storeDomain": "https://ronnyr34.wixsite.com/my-site-165",
+        "hasConnected": true,
+        "publicKey": "todo-future-capability"
+      }
+    }
   },
   "type": "space",
   "siteUrl": "http://localhost:3000",
@@ -54,13 +54,13 @@
   "@version": 6,
   "cloneInfo": {
     "contentIdMap": {
-      "53f55f248bb2fdd989d95e547153bb3d7aa2bf1d3e49c8398fbba717883532d9": "baed7bbb93614564b98e40c3dff588b9",
-      "004ac93aafb9cefac9eaa0ec81f7da86f597667b85651be3a70b36e39ed739c0": "082d4ec81e324193842322cb5a522636",
-      "da856bf7915de0572853a1caa7b26b8dd2ef56099e79b40eaa36fa88ed577079": "5604e0e444f34d5d97e44c09773df094"
+      "da856bf7915de0572853a1caa7b26b8dd2ef56099e79b40eaa36fa88ed577079": "439ec508a281493980a15efc2ae531d1",
+      "53f55f248bb2fdd989d95e547153bb3d7aa2bf1d3e49c8398fbba717883532d9": "95eaf0ed9cbd456f859e209fc645c6e9",
+      "004ac93aafb9cefac9eaa0ec81f7da86f597667b85651be3a70b36e39ed739c0": "12b82a64296942b086765c9c17a36563"
     },
     "modelIdMap": {
-      "caf0e3f6346d7d82d6541a2a1adef2008aeb7cc5e739ac3c003ed5e63b2e0696": "cb8b1cdd0047402e9919a41eae304505",
-      "134f567bf00f46cf6118e3b1e123fc622f6d5cbd1b817edb8e371f1be9909741": "7e651e2a955f46038447a76b1fd6051e"
+      "134f567bf00f46cf6118e3b1e123fc622f6d5cbd1b817edb8e371f1be9909741": "fd7ac7697d85492ea25ff39b5c46abf4",
+      "caf0e3f6346d7d82d6541a2a1adef2008aeb7cc5e739ac3c003ed5e63b2e0696": "458d73132c2a48b281b5c6f5a3f09b3d"
     }
   }
 }

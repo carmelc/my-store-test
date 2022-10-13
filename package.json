@@ -61,7 +61,7 @@
     "@types/react-sticky": "^6.0.3",
     "@types/traverse": "^0.6.32",
     "@vercel/fetch": "^6.1.0",
-    "@wix/data-backend-public-sdk-poc": "^1.0.7",
+    "@wix/data-backend-public-sdk-poc": "^1.0.8",
     "@wix/ecom": "^1.0.57",
     "@wix/sdk": "^1.1.8",
     "atob": "^2.1.2",
