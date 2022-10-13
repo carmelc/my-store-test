@@ -3,21 +3,30 @@ import {WixStoresCollection, WixStoresConfig, WixStoresProduct} from "@lib/wix-t
 
 const fastClone = (obj: any) =>JSON.parse(JSON.stringify(obj));
 
-async function queryProducts(config: WixStoresConfig, {searchString = '', limit = 100, collectionId = ''}) {
+async function queryProducts(config: WixStoresConfig, {
+  searchString = '',
+  limit = 100,
+  collectionId = '',
+  id = '',
+  slug = '',
+}) {
   const {wixClient} = await buildClient(config)
-  const filter: any = {};
-  if (searchString) {
-    filter.name = {$contains: searchString};
-  }
-  if (collectionId) {
-    filter.collections = { $hasSome: [ collectionId ] };
-  }
+
   return (await wixClient.data.query({
     collectionName: 'Stores/Products',
     omitTotalCount: true,
     include: ['collections'],
     dataQuery: {
-      filter,
+      filter: {
+        ...(searchString ? {
+          name: { $contains: searchString },
+        } : {}),
+        ...(collectionId ? {
+          collections: { $hasSome: [ collectionId ] },
+        } : {}),
+        ...(slug ? { slug } : {}),
+        ...(id ? { _id: id } : {}),
+      },
       paging: {
         limit,
       }
@@ -58,22 +67,18 @@ export async function getAllProductPaths(
 
 export async function getProduct(
   config: WixStoresConfig,
-  options: { id?: string; handle?: string }
+  {id, handle}: { id?: string; handle?: string }
 ) {
-  const products: any[] = await getAllProducts(config);
-  let result = {};
-  if (options.handle) {
-    result = products.find(({ slug }) => slug === options.handle)
-  } else if (options.id) {
-    result = products.find(({ id }) => id=== options.id)
+  if (id || handle) {
+    const product = (await queryProducts(config, {id, slug: handle}))?.[0];
+    if (!product) {
+      console.error('Product was not found for options', { id, handle })
+      return null
+    }
+    return fastClone(product)
   } else {
     throw new Error('A product ID or handle is required')
   }
-  if (!result) {
-    console.error('Product was not found for options', options)
-    return null
-  }
-  return fastClone(result)
 }
 
 export async function getAllCollections(config: WixStoresConfig): Promise<WixStoresCollection[]> {
