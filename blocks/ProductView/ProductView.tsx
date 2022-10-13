@@ -11,11 +11,12 @@ import {getPrice, toWixStoresLineItem} from '@lib/wix/storefront-data-hooks/src/
 import { ImageCarousel, LoadingDots } from '@components/ui'
 import ProductLoader from './ProductLoader'
 import {WixStoresProduct} from "@lib/wix-types";
+import { media } from '@wix/sdk';
 
 interface Props {
   className?: string
   children?: any
-  product: any
+  product: WixStoresProduct
   renderSeo?: boolean
   description?: string
   title?: string
@@ -34,8 +35,9 @@ const ProductBox: React.FC<Props> = ({
 
   const [selectedProductOptions, setSelectedProductOptions] = useState<any>({});
   useEffect(() => {
-    if (product?.productOptions) {
-      setSelectedProductOptions(product.productOptions.reduce((acc: {[key: string]: string}, curr: any) => {
+    const productOptionsArr = Object.values(product.productOptions ?? {});
+    if (productOptionsArr.length) {
+      setSelectedProductOptions(productOptionsArr.reduce((acc: {[key: string]: any}, curr) => {
         acc[curr.name] = curr.choices[0];
         return acc;
       }, {}));
@@ -52,9 +54,13 @@ const ProductBox: React.FC<Props> = ({
       setLoading(false)
     }
   }
-  const allImages = product?.media?.items?.map(({image}: any) => ({
-    src: image.url
-  }));
+  const allImages = product?.mediaItems
+    ?.filter(({type}) => type === 'Image')
+    .map(({src}: any) => media.getRawImageUrl(src))
+    .map(media => ({
+      ...media,
+      src: media.url,
+    }));
 
   return (
     <React.Fragment>
@@ -68,7 +74,7 @@ const ProductBox: React.FC<Props> = ({
             description: description,
             images: [
               {
-                url: product.images?.[0]?.src!,
+                url: media.getScaleToFitImageURL(product.mediaItems?.[0]?.src!, 800, 600, {}),
                 width: 800,
                 height: 600,
                 alt: title,
@@ -92,7 +98,7 @@ const ProductBox: React.FC<Props> = ({
               width={1050}
               height={1050}
               priority
-              images={allImages?.length > 0 ? allImages: [{
+              images={allImages?.length > 0 ? allImages as any : [{
                   src: `https://via.placeholder.com/1050x1050`,
                 }]}
             ></ImageCarousel>
@@ -108,7 +114,7 @@ const ProductBox: React.FC<Props> = ({
           <div dangerouslySetInnerHTML={{ __html: description! }} />
           <div>
             <Grid padding={2} columns={2}>
-              {(product && selectedProductOptions) ? product.productOptions?.map((productOption: any) => (<OptionPicker
+              {(product && selectedProductOptions) ? Object.values(product.productOptions ?? {}).map((productOption: any) => (<OptionPicker
                 key={productOption.name}
                 name={productOption.name}
                 options={productOption.choices?.filter(({inStock, visible}: any) => inStock && visible).map((op: any) => op.description as string)}

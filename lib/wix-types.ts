@@ -1,13 +1,27 @@
 export type WixStoresProduct = {
-  id: string;
+  _id: string;
+  description: string;
+  productOptions: {[key: string]: {
+    name: string;
+    optionType: string;
+    choices: {
+        description: string;
+        inStock: boolean;
+        value: string;
+        visible: boolean;
+      }[]}},
   price: { formatted: { price: string } };
-  media: { mainMedia: { image: { url: string } } };
+  mediaItems: {
+    src: string,
+    type: string,
+  }[];
+  collections: WixStoresCollection[]
   slug: string;
   name: string;
 };
 
 export type WixStoresCollection = {
-  id: string;
+  _id: string;
   name: string;
 };
 

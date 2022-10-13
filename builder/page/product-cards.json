@@ -1,43 +1,48 @@
 {
-  "createdBy": "sx8yWkSeuOOt8KR7iLlKVfhAks23",
-  "createdDate": 1665577780727,
-  "@originContentId": "53f55f248bb2fdd989d95e547153bb3d7aa2bf1d3e49c8398fbba717883532d9",
-  "@originOrg": "028f16fda7094723ac78b62d1a3cf945",
-  "lastUpdated": 1665578015215,
+  "@originModelId": "caf0e3f6346d7d82d6541a2a1adef2008aeb7cc5e739ac3c003ed5e63b2e0696",
+  "testRatio": 1,
   "firstPublished": 1665577923326,
+  "createdBy": "sx8yWkSeuOOt8KR7iLlKVfhAks23",
+  "modelId": "2a22ac8b09904df7ac28fc932c43e627",
+  "lastUpdatedBy": "sx8yWkSeuOOt8KR7iLlKVfhAks23",
   "name": "product-cards",
-  "modelId": "458d73132c2a48b281b5c6f5a3f09b3d",
+  "createdDate": 1665577780727,
+  "rev": "120qnudmj9g",
   "query": [
     {
+      "operator": "is",
       "property": "urlPath",
       "value": "/product-cards",
-      "operator": "is",
       "@type": "@builder.io/core:Query"
     }
   ],
-  "published": "published",
-  "id": "95eaf0ed9cbd456f859e209fc645c6e9",
+  "@originOrg": "028f16fda7094723ac78b62d1a3cf945",
   "meta": {
+    "lastPreviewUrl": "http://localhost:3000/product-cards?builder.space=4d21ef0c1391457a9faeb7a3ea164181&builder.cachebust=true&builder.preview=page&builder.noCache=true&__builder_editing__=true&builder.overrides.page=3b1c4261b668439c9df5d2f3c0f33363&builder.overrides.3b1c4261b668439c9df5d2f3c0f33363=3b1c4261b668439c9df5d2f3c0f33363&builder.overrides.page:/product-cards=3b1c4261b668439c9df5d2f3c0f33363&builder.options.includeRefs=true",
     "needsHydration": false,
+    "kind": "page",
     "hasLinks": false,
     "componentsUsed": {
       "ProductGrid": 1,
       "ProductBox": 2
-    },
-    "kind": "page",
-    "lastPreviewUrl": "http://localhost:3000/product-cards?builder.space=4d21ef0c1391457a9faeb7a3ea164181&builder.cachebust=true&builder.preview=page&builder.noCache=true&__builder_editing__=true&builder.overrides.page=3b1c4261b668439c9df5d2f3c0f33363&builder.overrides.3b1c4261b668439c9df5d2f3c0f33363=3b1c4261b668439c9df5d2f3c0f33363&builder.overrides.page:/product-cards=3b1c4261b668439c9df5d2f3c0f33363&builder.options.includeRefs=true"
+    }
   },
+  "@originContentId": "53f55f248bb2fdd989d95e547153bb3d7aa2bf1d3e49c8398fbba717883532d9",
+  "variations": {},
+  "id": "a5dba33d9ae049aea100f04f8a2dc830",
+  "published": "published",
+  "lastUpdated": 1665578015215,
   "data": {
+    "url": "/product-cards",
     "title": "product-cards",
     "state": {
+      "deviceSize": "large",
       "location": {
         "path": "",
         "query": {}
-      },
-      "deviceSize": "large"
+      }
     },
     "themeId": false,
-    "url": "/product-cards",
     "blocks": [
       {
         "@type": "@builder.io/sdk:Element",
@@ -202,10 +207,5 @@
         }
       }
     ]
-  },
-  "@originModelId": "caf0e3f6346d7d82d6541a2a1adef2008aeb7cc5e739ac3c003ed5e63b2e0696",
-  "variations": {},
-  "lastUpdatedBy": "sx8yWkSeuOOt8KR7iLlKVfhAks23",
-  "rev": "uairwb3datg",
-  "testRatio": 1
+  }
 }

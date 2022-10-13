@@ -1,5 +1,19 @@
 {
   "settings": {
+    "apps": {
+      "Postscript": {},
+      "Yotpo": {},
+      "Klaviyo": {},
+      "Rebuy": {},
+      "Stamped_io": {}
+    },
+    "plugins": {
+      "@builder.io/plugin-wix-stores": {
+        "storeDomain": "https://ronnyr34.wixsite.com/my-site-165",
+        "publicKey": "todo-future-capability",
+        "hasConnected": true
+      }
+    },
     "customComponents": [
       "ProductView",
       "CloudinaryImage",
@@ -27,24 +41,10 @@
       "ProductWidget",
       "ProductCollectionGrid",
       "CollectionBox"
-    ],
-    "apps": {
-      "Yotpo": {},
-      "Rebuy": {},
-      "Stamped_io": {},
-      "Postscript": {},
-      "Klaviyo": {}
-    },
-    "plugins": {
-      "@builder.io/plugin-wix-stores": {
-        "storeDomain": "https://ronnyr34.wixsite.com/my-site-165",
-        "hasConnected": true,
-        "publicKey": "todo-future-capability"
-      }
-    }
+    ]
   },
   "type": "space",
-  "siteUrl": "http://localhost:3000",
+  "siteUrl": "https://nextjs-wix-stores-test.vercel.app",
   "name": "WixStores Main",
   "loadPlugins": [
     "http://localhost:1268/plugin.system.js",
@@ -54,13 +54,13 @@
   "@version": 6,
   "cloneInfo": {
     "contentIdMap": {
-      "da856bf7915de0572853a1caa7b26b8dd2ef56099e79b40eaa36fa88ed577079": "439ec508a281493980a15efc2ae531d1",
-      "53f55f248bb2fdd989d95e547153bb3d7aa2bf1d3e49c8398fbba717883532d9": "95eaf0ed9cbd456f859e209fc645c6e9",
-      "004ac93aafb9cefac9eaa0ec81f7da86f597667b85651be3a70b36e39ed739c0": "12b82a64296942b086765c9c17a36563"
+      "da856bf7915de0572853a1caa7b26b8dd2ef56099e79b40eaa36fa88ed577079": "10642a3c61574fa4a4cc3250d711950e",
+      "53f55f248bb2fdd989d95e547153bb3d7aa2bf1d3e49c8398fbba717883532d9": "a5dba33d9ae049aea100f04f8a2dc830",
+      "004ac93aafb9cefac9eaa0ec81f7da86f597667b85651be3a70b36e39ed739c0": "cebc2f29f6f546a7a5f5963ac241130b"
     },
     "modelIdMap": {
-      "134f567bf00f46cf6118e3b1e123fc622f6d5cbd1b817edb8e371f1be9909741": "fd7ac7697d85492ea25ff39b5c46abf4",
-      "caf0e3f6346d7d82d6541a2a1adef2008aeb7cc5e739ac3c003ed5e63b2e0696": "458d73132c2a48b281b5c6f5a3f09b3d"
+      "134f567bf00f46cf6118e3b1e123fc622f6d5cbd1b817edb8e371f1be9909741": "2bda6e9a9a234b7bbfa885ef40475360",
+      "caf0e3f6346d7d82d6541a2a1adef2008aeb7cc5e739ac3c003ed5e63b2e0696": "2a22ac8b09904df7ac28fc932c43e627"
     }
   }
 }

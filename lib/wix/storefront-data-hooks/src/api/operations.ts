@@ -1,42 +1,42 @@
 import buildClient from '@lib/wix/client-builder'
-import { WixStoresConfig } from "@lib/wix-types";
+import {WixStoresCollection, WixStoresConfig, WixStoresProduct} from "@lib/wix-types";
 
 const fastClone = (obj: any) =>JSON.parse(JSON.stringify(obj));
 
-export async function queryProducts(config: WixStoresConfig, limit: number = 500) {
-  const {wixClient, legacyFetch} = await buildClient(config)
-  return {items: (await legacyFetch({url: 'stores/v1/products/query', method: 'POST'})).products};
-  // return wixClient.data.query({
-  //   collectionName: 'Stores/Products',
-  //   query: {
-  //     paging: {
-  //       limit,
-  //     }
-  //   }
-  // });
+export async function queryProducts(config: WixStoresConfig, limit: number = 100) {
+  const {wixClient} = await buildClient(config)
+  return wixClient.data.query({
+    collectionName: 'Stores/Products',
+    omitTotalCount: true,
+    include: ['collections'],
+    dataQuery: {
+      paging: {
+        limit,
+      }
+    }
+  });
 }
 
 
-export async function queryCollections(config: WixStoresConfig, limit: number = 500) {
-  const {wixClient, legacyFetch} = await buildClient(config)
-  return {items: (await legacyFetch({url: 'stores/v1/collections/query', method: 'POST'})).collections};
-  // return wixClient.data.query({
-  //   collectionName: 'Stores/Collections',
-  //   query: {
-  //     paging: {
-  //       limit,
-  //     }
-  //   }
-  // });
+export async function queryCollections(config: WixStoresConfig, limit: number = 100) {
+  const {wixClient} = await buildClient(config)
+  return wixClient.data.query({
+    collectionName: 'Stores/Collections',
+    omitTotalCount: true,
+    dataQuery: {
+      paging: {
+        limit,
+      }
+    }
+  });
 }
 
-export async function getAllProducts(config: WixStoresConfig, limit?: number) {
-  return (await queryProducts(config, limit)).items!;
+export async function getAllProducts(config: WixStoresConfig, limit?: number): Promise<WixStoresProduct[]> {
+  return (await queryProducts(config, limit)).items! as WixStoresProduct[];
 }
 
 export async function getProductsForCollection(collectionId: string, config: WixStoresConfig, limit?: number) {
-  const products = (await queryProducts(config, limit)).items!;
-  return products?.filter(({collectionIds}: {collectionIds: string[]}) => collectionIds.indexOf(collectionId) > -1)
+  return (await getAllProducts(config, limit))?.filter(({collections}) => collections.map(({_id}) => _id).indexOf(collectionId) > -1)
 }
 
 export async function getAllProductPaths(
@@ -68,8 +68,8 @@ export async function getProduct(
   return fastClone(result)
 }
 
-export async function getAllCollections(config: WixStoresConfig, limit?: number) {
-  return (await queryCollections(config, limit)).items!;
+export async function getAllCollections(config: WixStoresConfig, limit?: number): Promise<WixStoresCollection[]> {
+  return (await queryCollections(config, limit)).items! as WixStoresCollection[];
 }
 
 export async function getAllCollectionPaths(
@@ -85,16 +85,15 @@ export async function getCollection(
   config: WixStoresConfig,
   options: { id?: string; handle?: string }
 ) {
-  const collections: any[] = await getAllCollections(config);
-  let result = {};
+  const collections = await getAllCollections(config);
+  let result: any = {};
   if (options.handle || options.id) {
     const collectionIdentifier = options.handle || options.id;
-    result = collections.find(({ id }) => id === collectionIdentifier)
+    result = collections.find(({ _id }) => _id === collectionIdentifier)
   } else {
     throw new Error('A collection ID is required')
   }
   if (!result) {
-    console.error('Collection was not found for options', options)
     return null
   }
   return fastClone(result)

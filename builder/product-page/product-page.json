@@ -1,45 +1,27 @@
 {
-  "query": [],
-  "@originModelId": "134f567bf00f46cf6118e3b1e123fc622f6d5cbd1b817edb8e371f1be9909741",
-  "lastUpdatedBy": "sx8yWkSeuOOt8KR7iLlKVfhAks23",
-  "name": "Product Page",
   "createdDate": 1665504104437,
+  "modelId": "2bda6e9a9a234b7bbfa885ef40475360",
+  "name": "Product Page",
+  "query": [],
+  "lastUpdatedBy": "sx8yWkSeuOOt8KR7iLlKVfhAks23",
+  "id": "10642a3c61574fa4a4cc3250d711950e",
+  "createdBy": "sx8yWkSeuOOt8KR7iLlKVfhAks23",
+  "published": "published",
+  "testRatio": 1,
+  "variations": {},
+  "previewUrl": "https://nextjs-wix-stores-test.vercel.app/product/shoes",
+  "@originModelId": "134f567bf00f46cf6118e3b1e123fc622f6d5cbd1b817edb8e371f1be9909741",
   "firstPublished": 1665565448019,
   "meta": {
-    "componentsUsed": {
-      "ProductView": 1
-    },
     "lastPreviewUrl": "https://nextjs-wix-stores-test.vercel.app/product/shoes?builder.space=028f16fda7094723ac78b62d1a3cf945&builder.cachebust=true&builder.preview=product-page&builder.noCache=true&__builder_editing__=true&builder.overrides.product-page=da856bf7915de0572853a1caa7b26b8dd2ef56099e79b40eaa36fa88ed577079&builder.overrides.da856bf7915de0572853a1caa7b26b8dd2ef56099e79b40eaa36fa88ed577079=da856bf7915de0572853a1caa7b26b8dd2ef56099e79b40eaa36fa88ed577079",
     "kind": "component",
     "needsHydration": false,
-    "hasLinks": false
+    "hasLinks": false,
+    "componentsUsed": {
+      "ProductView": 1
+    }
   },
-  "id": "439ec508a281493980a15efc2ae531d1",
-  "createdBy": "sx8yWkSeuOOt8KR7iLlKVfhAks23",
-  "variations": {},
-  "modelId": "fd7ac7697d85492ea25ff39b5c46abf4",
-  "lastUpdated": 1665659005184,
-  "published": "published",
-  "testRatio": 1,
-  "previewUrl": "https://nextjs-wix-stores-test.vercel.app/product/shoes",
   "data": {
-    "product": {
-      "@type": "@builder.io/core:Request",
-      "request": {
-        "url": "not in use",
-        "method": "GET"
-      }
-    },
-    "productPreview": {
-      "request": {
-        "method": "GET",
-        "url": "not in use"
-      },
-      "options": {
-        "product": "df19c1f7-07d8-a265-42f8-e8dfa824cc6e"
-      },
-      "@type": "@builder.io/core:Request"
-    },
     "state": {
       "location": {
         "path": "",
@@ -47,11 +29,28 @@
       },
       "deviceSize": "large"
     },
-    "previewProduct": {
-      "@type": "@builder.io/core:Request",
+    "productPreview": {
+      "options": {
+        "product": "df19c1f7-07d8-a265-42f8-e8dfa824cc6e"
+      },
       "request": {
         "method": "GET",
         "url": "not in use"
+      },
+      "@type": "@builder.io/core:Request"
+    },
+    "previewProduct": {
+      "request": {
+        "method": "GET",
+        "url": "not in use"
+      },
+      "@type": "@builder.io/core:Request"
+    },
+    "product": {
+      "@type": "@builder.io/core:Request",
+      "request": {
+        "url": "not in use",
+        "method": "GET"
       }
     },
     "blocks": [
@@ -86,7 +85,8 @@
       }
     ]
   },
-  "rev": "s3r2vkss2ki",
+  "lastUpdated": 1665659005184,
+  "rev": "11pb6vt3i6x",
   "@originOrg": "028f16fda7094723ac78b62d1a3cf945",
   "@originContentId": "da856bf7915de0572853a1caa7b26b8dd2ef56099e79b40eaa36fa88ed577079"
 }

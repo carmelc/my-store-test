@@ -6,12 +6,7 @@ import { Themed, jsx } from 'theme-ui'
 import { LoadingDots } from '@components/ui'
 import wixConfig from '@config/wix'
 import { ProductGrid, ProductGridProps } from '../ProductGrid/ProductGrid'
-import {
-  getAllProducts,
-  getCollection,
-  getProduct,
-  getProductsForCollection
-} from '@lib/wix/storefront-data-hooks/src/api/operations'
+import { getProductsForCollection } from '@lib/wix/storefront-data-hooks/src/api/operations'
 import { WixStoresCollection } from "@lib/wix-types";
 
 interface Props {
@@ -28,22 +23,22 @@ const CollectionPreview: FC<Props> = ({
   renderSeo,
 }) => {
   const collection: WixStoresCollection  = typeof selectedCollection === 'string' ? {
-    id: selectedCollection,
+    _id: selectedCollection,
     name: 'Collection Name Preview'
   } : selectedCollection;
   const [products, setProducts] = useState<any[]>([])
   const [loading, setLoading] = useState(false)
   useEffect(() => {
-    if (collection?.id) {
+    if (collection?._id) {
       setLoading(true)
-      getProductsForCollection(collection.id, wixConfig).then(products => {
+      getProductsForCollection(collection._id, wixConfig).then(products => {
         setProducts(products)
         setLoading(false)
       })
     }
-  }, [collection.id])
+  }, [collection?._id])
 
-  if (loading || !collection?.id) {
+  if (loading || !collection?._id) {
     return <LoadingDots />
   }
   if (!products?.length) {
@@ -54,7 +49,7 @@ const CollectionPreview: FC<Props> = ({
   return (
     <Themed.div
       sx={{ display: 'flex', flexDirection: 'column' }}
-      key={collection.id}
+      key={collection._id}
     >
       {renderSeo && (
         <NextSeo

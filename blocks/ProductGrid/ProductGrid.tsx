@@ -78,7 +78,7 @@ export const ProductGrid: FC<ProductGridProps> = ({
     <Grid gap={2} width={['100%', '40%', '24%']}>
       {products.slice(offset, limit).map((product, i) => (
         <ProductCard
-          key={String(product.id) + i}
+          key={String(product._id) + i}
           {...(highlightCard?.index === i ? highlightCard : cardProps)}
           product={product}
         />

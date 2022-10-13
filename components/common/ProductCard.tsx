@@ -5,6 +5,7 @@ import { Card, Text } from '@theme-ui/components'
 import { Link, ImageCarousel } from '@components/ui'
 import { WixStoresProduct } from '@lib/wix-types';
 import {getPrice} from "@lib/wix/storefront-data-hooks/src/utils/product";
+import { media } from '@wix/sdk';
 
 export interface ProductCardProps {
   className?: string
@@ -50,7 +51,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             sizes={imgSizes}
             alt={product.name}
             images={
-              product?.media?.mainMedia?.image?.url ?  [{ src: product?.media?.mainMedia?.image?.url }] : []
+              product?.mediaItems?.[0]?.src ?  [{ src: media.getScaleToFitImageURL(product?.mediaItems?.[0]?.src, Number(imgWidth), Number(imgHeight), {}) }] : []
             }
           />
         </div>
