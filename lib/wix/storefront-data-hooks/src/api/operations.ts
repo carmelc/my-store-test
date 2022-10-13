@@ -3,24 +3,32 @@ import {WixStoresCollection, WixStoresConfig, WixStoresProduct} from "@lib/wix-t
 
 const fastClone = (obj: any) =>JSON.parse(JSON.stringify(obj));
 
-export async function queryProducts(config: WixStoresConfig, limit: number = 100) {
+async function queryProducts(config: WixStoresConfig, {searchString = '', limit = 100, collectionId = ''}) {
   const {wixClient} = await buildClient(config)
-  return wixClient.data.query({
+  const filter: any = {};
+  if (searchString) {
+    filter.name = {$contains: searchString};
+  }
+  if (collectionId) {
+    filter.collections = { $hasSome: [ collectionId ] };
+  }
+  return (await wixClient.data.query({
     collectionName: 'Stores/Products',
     omitTotalCount: true,
     include: ['collections'],
     dataQuery: {
+      filter,
       paging: {
         limit,
       }
     }
-  });
+  })).items as WixStoresProduct[];
 }
 
 
-export async function queryCollections(config: WixStoresConfig, limit: number = 100) {
+async function queryCollections(config: WixStoresConfig, {searchString = '', limit = 100} = {}) {
   const {wixClient} = await buildClient(config)
-  return wixClient.data.query({
+  return (await wixClient.data.query({
     collectionName: 'Stores/Collections',
     omitTotalCount: true,
     dataQuery: {
@@ -28,15 +36,15 @@ export async function queryCollections(config: WixStoresConfig, limit: number = 
         limit,
       }
     }
-  });
+  })).items as WixStoresCollection[];
 }
 
-export async function getAllProducts(config: WixStoresConfig, limit?: number): Promise<WixStoresProduct[]> {
-  return (await queryProducts(config, limit)).items! as WixStoresProduct[];
+export async function getAllProducts(config: WixStoresConfig, { limit = 100 } = {}): Promise<WixStoresProduct[]> {
+  return queryProducts(config, {limit});
 }
 
-export async function getProductsForCollection(collectionId: string, config: WixStoresConfig, limit?: number) {
-  return (await getAllProducts(config, limit))?.filter(({collections}) => collections.map(({_id}) => _id).indexOf(collectionId) > -1)
+export async function getProductsForCollection(collectionId: string, config: WixStoresConfig, { limit = 100 } = {}) {
+  return queryProducts(config, {collectionId, limit})
 }
 
 export async function getAllProductPaths(
@@ -68,15 +76,14 @@ export async function getProduct(
   return fastClone(result)
 }
 
-export async function getAllCollections(config: WixStoresConfig, limit?: number): Promise<WixStoresCollection[]> {
-  return (await queryCollections(config, limit)).items! as WixStoresCollection[];
+export async function getAllCollections(config: WixStoresConfig): Promise<WixStoresCollection[]> {
+  return queryCollections(config);
 }
 
 export async function getAllCollectionPaths(
   config: WixStoresConfig,
-  limit?: number
 ): Promise<string[]> {
-  const collections: any[] = await getAllCollections(config, limit);
+  const collections: any[] = await getAllCollections(config);
   // interface need update
   return collections.map((val) => val.handle)
 }
@@ -103,7 +110,5 @@ export async function searchProducts(
   config: WixStoresConfig,
   searchString: string,
 ) {
-  const products: any[] = await getAllProducts(config);
-  const searchLowerCase = searchString.toLowerCase();
-  return products.filter(({name}) => name.toLowerCase().indexOf(searchLowerCase) > -1);
+  return queryProducts(config, {searchString});
 }

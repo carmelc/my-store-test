@@ -9,10 +9,7 @@ import { BuilderComponent, Builder, builder } from '@builder.io/react'
 import { resolveBuilderContent } from '@lib/resolve-builder-content'
 import builderConfig from '@config/builder'
 import wixConfig from '@config/wix'
-import {
-  getCollection,
-  getAllCollectionPaths,
-} from '@lib/wix/storefront-data-hooks/src/api/operations'
+import { getCollection } from '@lib/wix/storefront-data-hooks/src/api/operations'
 import DefaultErrorPage from 'next/error'
 import Head from 'next/head'
 import { useThemeUI } from '@theme-ui/core'

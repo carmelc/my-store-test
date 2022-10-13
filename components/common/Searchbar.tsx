@@ -8,7 +8,7 @@ import { ProductGrid } from 'blocks/ProductGrid/ProductGrid'
 import { Button, Themed, jsx, Input, Label } from 'theme-ui'
 import { searchProducts } from '@lib/wix/storefront-data-hooks/src/api/operations'
 import { ExpandModal } from 'react-spring-modal'
-import { throttle } from 'lodash'
+import { debounce } from 'lodash'
 import 'react-spring-modal/styles.css'
 import { Cross } from '@components/icons'
 
@@ -115,7 +115,7 @@ const SearchModalContent = (props: {
     }
   }, [])
 
-  const throttleSearch = useCallback(throttle(getProducts), [])
+  const debouncedSearch = useCallback(debounce(getProducts, 250), [])
 
   return (
     <Themed.div
@@ -132,11 +132,11 @@ const SearchModalContent = (props: {
         sx={{ marginBottom: 15 }}
         defaultValue={props.initialSearch}
         placeholder="Search for products..."
-        onChange={(event) => throttleSearch(event.target.value)}
+        onChange={(event) => debouncedSearch(event.target.value)}
       />
       {loading ? (
         <LoadingDots />
-      ) : products.length ? (
+      ) : products?.length ? (
         <>
           <Label>
             Search Results for "<strong>{search}</strong>"
