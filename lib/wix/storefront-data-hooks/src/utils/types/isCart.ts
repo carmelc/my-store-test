@@ -1,4 +1,4 @@
-import { Cart } from '@wix/ecom/build/cjs/src/ecom-v1-cart-cart.universal';
+import type { Cart } from '@lib/wix-stores.model';
 
 export function isCart(potentialCart: Cart): potentialCart is Cart {
   return !!(

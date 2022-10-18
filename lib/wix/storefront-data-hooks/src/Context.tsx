@@ -1,6 +1,6 @@
 import React from 'react'
-import type { Cart, LineItem } from '@wix/ecom/build/cjs/src/ecom-v1-cart-cart.universal';
 import {clientTypes} from "@lib/wix/client-builder";
+import type { Cart } from "@lib/wix-stores.model";
 
 interface ContextShape {
   setCart: (cart: Cart) => void

@@ -7,7 +7,7 @@ import { LoadingDots } from '@components/ui'
 import wixConfig from '@config/wix'
 import { ProductGrid, ProductGridProps } from '../ProductGrid/ProductGrid'
 import { getProductsForCollection } from '@lib/wix/storefront-data-hooks/src/api/operations'
-import { WixStoresCollection } from "@lib/wix-types";
+import { WixStoresCollection } from "@lib/wix-stores.model";
 
 interface Props {
   className?: string

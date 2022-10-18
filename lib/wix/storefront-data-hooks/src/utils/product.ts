@@ -1,5 +1,4 @@
-import type { LineItem } from "@wix/ecom/build/cjs/src/ecom-v1-cart-cart.universal";
-import {WixStoresProduct} from "@lib/wix-types";
+import type {LineItem, WixStoresProduct} from "@lib/wix-stores.model";
 
 const WIX_STORES_APP_ID = '1380b703-ce81-ff05-f115-39571d94dfcd';
 

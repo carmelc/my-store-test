@@ -1,9 +1,9 @@
 import {WIX_ACCESS_TOKEN_COOKIE, WIX_REFRESH_TOKEN_COOKIE, WIX_COOKIE_EXPIRE} from './const'
 import Cookies from 'js-cookie'
-import { cart, checkout } from '@wix/ecom/build/cjs'
+import { cart, checkout } from '@wix/ecom'
 import {data} from '@wix/data-backend-public-sdk-poc/build/cjs'
 import {createClient, session} from '@wix/sdk';
-import {WixStoresConfig} from "@lib/wix-types";
+import {WixStoresConfig} from "@lib/wix-stores.model";
 
 const wixClient = createClient({
   data,

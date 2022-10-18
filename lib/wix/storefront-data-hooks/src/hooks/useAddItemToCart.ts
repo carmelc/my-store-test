@@ -1,5 +1,5 @@
 import { useAddItemsToCart } from './useAddItemsToCart'
-import {LineItem} from "@wix/ecom/build/cjs/src/ecom-v1-cart-cart.universal";
+import {LineItem} from "@lib/wix-stores.model";
 
 export function useAddItemToCart() {
   const addItemsToCart = useAddItemsToCart()

@@ -1,6 +1,6 @@
 import { LocalStorageKeys } from './keys'
 import { isCart } from '../../utils'
-import type { Cart } from '@wix/ecom/build/cjs/src/ecom-v1-cart-cart.universal';
+import type { Cart } from '@lib/wix-stores.model';
 
 function set(key: string, value: string) {
   const isBrowser = typeof window !== 'undefined'

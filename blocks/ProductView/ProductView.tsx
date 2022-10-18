@@ -10,7 +10,7 @@ import { useAddItemToCart } from '@lib/wix/storefront-data-hooks'
 import {getPrice, toWixStoresLineItem} from '@lib/wix/storefront-data-hooks/src/utils/product'
 import { ImageCarousel, LoadingDots } from '@components/ui'
 import ProductLoader from './ProductLoader'
-import {WixStoresProduct} from "@lib/wix-types";
+import {WixStoresProduct} from "@lib/wix-stores.model";
 import { media } from '@wix/sdk';
 
 interface Props {

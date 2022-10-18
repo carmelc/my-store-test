@@ -8,8 +8,8 @@ import {
   useUpdateItemQuantity,
   useRemoveItemFromCart,
 } from '@lib/wix/storefront-data-hooks'
-import type { LineItem } from "@wix/ecom/build/cjs/src/ecom-v1-cart-cart.universal";
 import { media } from '@wix/sdk';
+import type { LineItem } from "@lib/wix-stores.model";
 
 const CartItem = ({
   item,

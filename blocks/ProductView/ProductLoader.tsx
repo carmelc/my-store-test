@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { getProduct } from '@lib/wix/storefront-data-hooks/src/api/operations'
 import wixConfig from '@config/wix'
 import { LoadingDots } from '@components/ui'
-import {WixStoresProduct} from "@lib/wix-types";
+import {WixStoresProduct} from "@lib/wix-stores.model";
 
 interface Props {
   className?: string

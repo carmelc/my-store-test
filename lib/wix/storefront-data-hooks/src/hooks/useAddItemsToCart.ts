@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { Context } from '../Context'
-import type { LineItem } from '@wix/ecom/build/cjs/src/ecom-v1-cart-cart.universal';
+import type {LineItem} from "@lib/wix-stores.model";
 
 export function useAddItemsToCart() {
   const { client, cart, setCart } = useContext(Context)

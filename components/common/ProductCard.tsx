@@ -3,7 +3,7 @@
 import { Themed, jsx } from 'theme-ui'
 import { Card, Text } from '@theme-ui/components'
 import { Link, ImageCarousel } from '@components/ui'
-import { WixStoresProduct } from '@lib/wix-types';
+import { WixStoresProduct } from '@lib/wix-stores.model';
 import {getPrice} from "@lib/wix/storefront-data-hooks/src/utils/product";
 import { media } from '@wix/sdk';
 

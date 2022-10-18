@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Context } from './Context'
-import { LocalStorage, LocalStorageKeys } from './utils'
-import { WixStoresConfig } from "@lib/wix-types";
-import { Cart } from '@wix/ecom/build/cjs/src/ecom-v1-cart-cart.universal';
-import {createClient} from "@wix/sdk";
+import { LocalStorage } from './utils'
+import {Cart, WixStoresConfig, ChannelType} from "@lib/wix-stores.model";
 import clientBuilder, {clientTypes} from "@lib/wix/client-builder";
-import {ChannelType} from "@wix/ecom/build/cjs/src/ecom-v1-cart.types";
 
 
 export interface CommerceProviderProps {

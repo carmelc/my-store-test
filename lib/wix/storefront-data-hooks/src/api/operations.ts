@@ -1,5 +1,5 @@
 import buildClient from '@lib/wix/client-builder'
-import {WixStoresCollection, WixStoresConfig, WixStoresProduct} from "@lib/wix-types";
+import {WixStoresCollection, WixStoresConfig, WixStoresProduct} from "@lib/wix-stores.model";
 
 const fastClone = (obj: any) =>JSON.parse(JSON.stringify(obj));
 

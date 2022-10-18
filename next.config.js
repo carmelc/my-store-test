@@ -3,7 +3,6 @@ const bundleAnalyzer = require('@next/bundle-analyzer')({
 })
 
 module.exports = bundleAnalyzer({
-  target: 'serverless',
   images: {
     domains: ['static.wixstatic.com','cdn.builder.io', 'via.placeholder.com'],
   },

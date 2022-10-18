@@ -12,7 +12,7 @@ import {
   getProduct,
 } from '@lib/wix/storefront-data-hooks/src/api/operations'
 import wixConfig from '@config/wix'
-import { WixStoresProduct } from "@lib/wix-types";
+import { WixStoresProduct } from "@lib/wix-stores.model";
 interface HighlightedCardProps extends Omit<ProductCardProps, 'product'> {
   index: number
 }
